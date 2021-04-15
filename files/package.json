@@ -1,0 +1,74 @@
+{
+  "name": "dockerfile-project",
+  "description": "Node.js files/configurations that support the creation of Dockerfiles",
+  "license": "MIT",
+  "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "docker build .",
+    "build:slim": "bash build-slim.sh",
+    "commit": "git-cz",
+    "fix": "run-s fix:*",
+    "fix:prettier": "prettier \"{*.json,*.sh,*.yml}\" --write",
+    "info": "npm-scripts-info",
+    "postinstall": "husky install && bash .update.sh",
+    "prepare-release": "run-s update test version",
+    "shell": "",
+    "test": "run-s test:*",
+    "test:docker": "",
+    "test:prettier": "prettier \"{*.json,*.sh,*.yml}\" --list-different",
+    "test:shellcheck": "shellcheck *.sh",
+    "update": "bash .update.sh",
+    "version": "standard-version --no-verify"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "devDependencies": {
+    "@megabytelabs/prettier-config": "^1.2.17",
+    "cspell": "^5.3.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^5.1.1",
+    "lint-staged": "^10.5.4",
+    "npm-run-all": "^4.1.5",
+    "npm-scripts-info": "^0.3.9",
+    "prettier": "^2.1.1",
+    "prettier-package-json": "^2.1.3",
+    "prettier-plugin-sh": "^0.6.0",
+    "shellcheck": "^1.0.0",
+    "standard-version": "^9.0.0"
+  },
+  "funding": [
+    {
+      "type": "opencollective",
+      "url": "https://opencollective.com/megabytelabs"
+    },
+    {
+      "type": "patreon",
+      "url": "https://www.patreon.com/ProfessorManhattan"
+    }
+  ],
+  "lint-staged": {
+    "*.{json|sh|yml}": [
+      "prettier --write"
+    ],
+    "package.json": [
+      "prettier-package-json --write"
+    ]
+  },
+  "prettier": "@megabytelabs/prettier-config",
+  "scripts-info": {
+    "build": "Build the Docker image on the local machine",
+    "build:slim": "Build a slim Docker image with Dockerslim",
+    "commit": "The preferred way of running git commit (instead of git commit, we prefer running 'npm run commit')",
+    "info": "Logs descriptions of all the npm tasks",
+    "fix": "Automatically fix formatting errors",
+    "prepare-release": "Updates the CHANGELOG with commits made using 'npm run commit' and updates the project to be ready for release",
+    "shell": "Run the Dockerfile and open its shell",
+    "test": "Validates the Dockerfile and performs linting tests",
+    "update": "Runs .update.sh to automatically update meta files and documentation",
+    "version": "Used by 'npm run prepare-release' to update the CHANGELOG and app version"
+  }
+}
