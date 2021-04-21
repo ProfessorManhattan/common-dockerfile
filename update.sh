@@ -37,7 +37,7 @@ if [ -f ./package.json ]; then
   PACKAGE_VERSION=$(cat package.json | jq '.version' | cut -d '"' -f 2)
   PACKAGE_SLIM_BUILD=$(cat package.json | jq '.scripts."build:slim"' | cut -d '"' -f 2)
   cp -Rf ./.modules/dockerfile/files/ .
-  jq --arg a ${PACKAGE_DESCRIPTION//\/} '.description = $a' package.json > __jq.json && mv __jq.json package.json
+  jq --arg a ${PACKAGE_DESCRIPTION//\/} '.description = "$a"' package.json > __jq.json && mv __jq.json package.json
   jq --arg a ${PACKAGE_NAME//\/} '.name = $a' package.json > __jq.json && mv __jq.json package.json
   jq --arg a ${PACKAGE_VERSION//\/} '.version = $a' package.json > __jq.json && mv __jq.json package.json
   jq --arg a ${PACKAGE_SLIM_BUILD//\/} '.scripts."build:slim" = $a' package.json > __jq.json && mv __jq.json package.json
