@@ -1,0 +1,6 @@
+---
+stages:
+  - downstream
+
+include:
+  - remote: https://gitlab.com/megabyte-space/gitlab-ci-templates/-/raw/master/group-dockerfile.gitlab-ci.yml
