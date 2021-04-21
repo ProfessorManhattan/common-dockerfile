@@ -6,7 +6,7 @@
   "version": "0.0.1",
   "scripts": {
     "build": "docker build .",
-    "build:slim": "bash build-slim.sh",
+    "build:slim": "",
     "commit": "git-cz",
     "fix": "run-s fix:*",
     "fix:prettier": "prettier \"{*.json,*.sh,*.yml}\" --write",
