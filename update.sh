@@ -74,4 +74,8 @@ npx -y @appnest/readme generate --config __bp.json --input ./.modules/docs/bluep
 npx -y @appnest/readme generate --config __bp.json --input ./.modules/docs/$BLUEPRINT_README_FILE | true
 rm __bp.json
 
+# Remove formatting error
+sed -i .bak 's/](#-/](#/g' README.md
+sed -i .bak 's/](#-/](#/g' CONTRIBUTING.md
+
 echo "*** Done updating meta files and generating documentation ***"
