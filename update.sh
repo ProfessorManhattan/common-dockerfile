@@ -66,6 +66,12 @@ fi
 BLUEPRINT_README_FILE="blueprint-readme.md"
 if [ "$DOCKERFILE_PROJECT_TYPE" == "ansible-molecule" ]; then
   BLUEPRINT_README_FILE="blueprint-readme-ansible-molecule.md"
+elif [ "$DOCKERFILE_PROJECT_TYPE" == "ci-pipeline" ]; then
+  BLUEPRINT_README_FILE="blueprint-readme-ci.md"
+elif [ "$DOCKERFILE_PROJECT_TYPE" == "apps" ]; then
+  BLUEPRINT_README_FILE="blueprint-readme-apps.md"
+elif [ "$DOCKERFILE_PROJECT_TYPE" == "software" ]; then
+  BLUEPRINT_README_FILE="blueprint-readme-software.md"
 fi
 
 # Generate the documentation
