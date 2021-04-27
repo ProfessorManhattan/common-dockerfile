@@ -15,7 +15,7 @@ else
   cd ../..
 fi
 pwd
-source "../shared/update.lib.sh"
+source "./.modules/shared/update.lib.sh"
 
 ensure_node_installed
 ensure_jq_installed
