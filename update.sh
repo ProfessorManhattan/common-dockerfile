@@ -42,7 +42,7 @@ if [ -f ./package.json ]; then
   jq --arg a "${PACKAGE_DESCRIPTION//\/}" '.description = $a' package.json > __jq.json && mv __jq.json package.json
   jq --arg a "${PACKAGE_NAME//\/}" '.name = $a' package.json > __jq.json && mv __jq.json package.json
   jq --arg a "${PACKAGE_VERSION//\/}" '.version = $a' package.json > __jq.json && mv __jq.json package.json
-  jq --arg a "${PACKAGE_REGULAR_BUILD//\/}" '.scripts.build = $a' package.json > __jq.json && mv __jq.json package.json
+  jq --arg a "${PACKAGE_REGULAR_BUILD}" '.scripts.build = $a' package.json > __jq.json && mv __jq.json package.json
   jq --arg a "${PACKAGE_SLIM_BUILD//\/}" '.scripts."build:slim" = $a' package.json > __jq.json && mv __jq.json package.json
   jq --arg a "${PACKAGE_SHELL_COMMAND//\/}" '.scripts.shell = $a' package.json > __jq.json && mv __jq.json package.json
   npx prettier-package-json --write
