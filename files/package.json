@@ -5,8 +5,8 @@
   "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
   "version": "0.0.1",
   "scripts": {
-    "build": "docker build .",
-    "build:slim": "",
+    "build": "docker build --tag megabytelabs/dockerfile-project:latest .",
+    "build:slim": "docker-slim build --tag megabytelabs/dockerfile-project:slim --http-probe=false COMMAND_TO_RUN_HERE",
     "commit": "git-cz",
     "fix": "run-s fix:*",
     "fix:prettier": "prettier \"{*.json,*.sh,*.yml}\" --write",

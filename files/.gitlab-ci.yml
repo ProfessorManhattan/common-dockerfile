@@ -8,4 +8,5 @@ include:
   - remote: https://gitlab.com/megabyte-space/gitlab-ci-templates/-/raw/master/dockerhub.gitlab-ci.yml
   - remote: https://gitlab.com/megabyte-space/gitlab-ci-templates/-/raw/master/dockerhub-slim.gitlab-ci.yml
   - remote: https://gitlab.com/megabyte-space/gitlab-ci-templates/-/raw/master/gitlab-registry.gitlab-ci.yml
+  - remote: https://gitlab.com/megabyte-space/gitlab-ci-templates/-/raw/master/hadolint.gitlab-ci.yml
   - remote: https://gitlab.com/megabyte-space/gitlab-ci-templates/-/raw/master/update.gitlab-ci.yml
