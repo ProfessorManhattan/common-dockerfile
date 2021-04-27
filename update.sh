@@ -124,7 +124,7 @@ npx prettier --write .blueprint.json
 # Ensure slim.report.json is properly formatted
 npx prettier --write slim.report.json
 
-# Ensure docker-pushrm plugin is installed to user's ~/.docker folder
+# Install user-scoped software dependencies
 if [ "$(uname)" == "Darwin" ]; then
     DOCKER_PUSHRM_DOWNLOAD_LINK=https://github.com/christian-korneck/docker-pushrm/releases/download/v1.7.0/docker-pushrm_darwin_amd64
     if [ ! -f $HOME/.docker/cli-plugins/docker-pushrm ]; then
@@ -155,7 +155,8 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     if [ ! -f $HOME/.config/megabytelabs/bin/docker-slim ]; then
       wget $DOCKER_SLIM_DOWNLOAD_LINK
       mkdir -p $HOME/.config/megabytelabs/bin
-      tar -zxvf dist_linux.tar.gz -C $HOME/.config/megabytelabs/bin
+      tar -zxvf dist_linux.tar.gz
+      cp ./dist_linux/* $HOME/.config/megabytelabs/bin/
       rm dist_linux.tar.gz
       export PATH="$HOME/.config/megabytelabs/bin:$PATH"
       if [[ $(grep -L 'PATH=$HOME/.config/megabytelabs/bin' "$HOME/.bashrc") ]]; then
