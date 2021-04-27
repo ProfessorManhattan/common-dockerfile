@@ -48,6 +48,11 @@ if [ -f ./package.json ]; then
   npx prettier-package-json --write
 else
   cp -Rf ./.modules/dockerfile/files/ .
+  BLUEPRINT_PACKAGE_NAME=$(cat .blueprint.json | jq '.slug' | cut -d '"' -f 2)
+  BLUEPRINT_PACKAGE_DESCRIPTION=$(cat .blueprint.json | jq '.description_template' | cut -d '"' -f 2)
+  jq --arg a "${BLUEPRINT_PACKAGE_NAME}" '.name = $a' package.json > __jq.json && mv __jq.json package.json
+  jq --arg a "${BLUEPRINT_PACKAGE_DESCRIPTION}" '.description = $a' package.json > __jq.json && mv __jq.json package.json
+  npx prettier-package-json --write
 fi
 
 # Ensure the pre-commit hook is executable
@@ -108,5 +113,14 @@ PACKAGE_DOCKER_COMMAND=$(cat .blueprint.json | jq '.docker_command' | cut -d '"'
 sed -i .bak "s^DOCKER_SLIM_COMMAND_HERE^${PACKAGE_DOCKER_COMMAND}^g" package.json
 rm package.json.bak | true
 
+# Build the images if slim.report.json is not present
+if [ ! -f ./slim.report.json ]; then
+  npm run build
+fi
+
+# Inject the image size into the description
+SLIM_IMAGE_SIZE=$(cat slim.report.json | jq '.minified_image_size_human' | cut -d '"' -f 2)
+sed -i .bak "s^SLIM_IMAGE_SIZE^${SLIM_IMAGE_SIZE}^g" package.json
+rm package.json.bak | true
 
 echo "*** Done updating meta files and generating documentation ***"
