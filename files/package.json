@@ -54,9 +54,6 @@
     "*.{json,sh,yml}": [
       "prettier --write"
     ],
-    ".blueprint.json": [
-      "prettier --write"
-    ],
     "package.json": [
       "prettier-package-json --write"
     ]
