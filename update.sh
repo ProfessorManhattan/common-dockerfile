@@ -109,7 +109,7 @@ sed -i .bak "s^dockerfile-project^${PACKAGE_NAME}^g" package.json
 rm package.json.bak | true
 
 # Update DockerSlim command
-PACKAGE_DOCKER_COMMAND=$(cat .blueprint.json | jq '.docker_command' | cut -d '"' -f 2)
+PACKAGE_DOCKER_COMMAND=$(cat .blueprint.json | jq '.dockerslim_command' | cut -d '"' -f 2)
 sed -i .bak "s^DOCKER_SLIM_COMMAND_HERE^${PACKAGE_DOCKER_COMMAND}^g" package.json
 rm package.json.bak | true
 
