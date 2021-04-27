@@ -124,4 +124,21 @@ npx prettier --write .blueprint.json
 # Ensure slim.report.json is properly formatted
 npx prettier --write slim.report.json
 
+# Ensure docker-pushrm plugin is installed to user's ~/.docker folder
+if [ "$(uname)" == "Darwin" ]; then
+    DOCKER_PUSHRM_DOWNLOAD_LINK=https://github.com/christian-korneck/docker-pushrm/releases/download/v1.7.0/docker-pushrm_darwin_amd64
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    DOCKER_PUSHRM_DOWNLOAD_LINK=https://github.com/christian-korneck/docker-pushrm/releases/download/v1.7.0/docker-pushrm_linux_amd64
+elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
+    # Do something under 32 bits Windows NT platform
+elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ]; then
+    # Do something under 64 bits Windows NT platform
+fi
+# TODO: Support Windows as well
+if [ ! -f $HOME/.docker/cli-plugins/docker-pushrm ]; then
+  mkdir -p $HOME/.docker/cli-plugins
+  wget $DOCKER_PUSHRM_DOWNLOAD_LINK -O $HOME/.docker/cli-plugins/docker-pushrm
+  chmod +x $HOME/.docker/cli-plugins/docker-pushrm
+fi
+
 echo "*** Done updating meta files and generating documentation ***"
