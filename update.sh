@@ -40,11 +40,11 @@ if [ -f ./package.json ]; then
   PACKAGE_SHELL_COMMAND=$(cat package.json | jq '.scripts.shell' | cut -d '"' -f 2)
   cp -Rf ./.modules/dockerfile/files/ .
   jq --arg a "${PACKAGE_DESCRIPTION//\/}" '.description = $a' package.json > __jq.json && mv __jq.json package.json
-  jq --arg a "${PACKAGE_NAME//\/}" '.name = $a' package.json > __jq.json && mv __jq.json package.json
+  jq --arg a "${PACKAGE_NAME}" '.name = $a' package.json > __jq.json && mv __jq.json package.json
   jq --arg a "${PACKAGE_VERSION//\/}" '.version = $a' package.json > __jq.json && mv __jq.json package.json
   jq --arg a "${PACKAGE_REGULAR_BUILD}" '.scripts.build = $a' package.json > __jq.json && mv __jq.json package.json
-  jq --arg a "${PACKAGE_SLIM_BUILD//\/}" '.scripts."build:slim" = $a' package.json > __jq.json && mv __jq.json package.json
-  jq --arg a "${PACKAGE_SHELL_COMMAND//\/}" '.scripts.shell = $a' package.json > __jq.json && mv __jq.json package.json
+  jq --arg a "${PACKAGE_SLIM_BUILD}" '.scripts."build:slim" = $a' package.json > __jq.json && mv __jq.json package.json
+  jq --arg a "${PACKAGE_SHELL_COMMAND}" '.scripts.shell = $a' package.json > __jq.json && mv __jq.json package.json
   npx prettier-package-json --write
 else
   cp -Rf ./.modules/dockerfile/files/ .
