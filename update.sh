@@ -123,9 +123,13 @@ npx prettier --write .blueprint.json
 
 # Ensure slim.report.json is properly formatted
 npx prettier --write slim.report.json
+# TODO: Make sure environment is not a docker container
 
 # Install user-scoped software dependencies
-if [ "$(uname)" == "Darwin" ]; then
+if grep -sq 'docker\|lxc' /proc/1/cgroup; then
+  echo "The environment is a Docker container so user-scoped software dependencies are not being installed"
+else
+  if [ "$(uname)" == "Darwin" ]; then
     DOCKER_PUSHRM_DOWNLOAD_LINK=https://github.com/christian-korneck/docker-pushrm/releases/download/v1.7.0/docker-pushrm_darwin_amd64
     if [ ! -f $HOME/.docker/cli-plugins/docker-pushrm ]; then
       mkdir -p $HOME/.docker/cli-plugins
@@ -144,7 +148,7 @@ if [ "$(uname)" == "Darwin" ]; then
         echo 'export PATH=$HOME/.config/megabytelabs/bin:$PATH' >> $HOME/.bash_profile
       fi
     fi
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+  elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     DOCKER_PUSHRM_DOWNLOAD_LINK=https://github.com/christian-korneck/docker-pushrm/releases/download/v1.7.0/docker-pushrm_linux_amd64
     if [ ! -f $HOME/.docker/cli-plugins/docker-pushrm ]; then
       mkdir -p $HOME/.docker/cli-plugins
@@ -163,10 +167,11 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
         echo 'export PATH=$HOME/.config/megabytelabs/bin:$PATH' >> $HOME/.bashrc
       fi
     fi
-elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
+  elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
     echo "WARNING: No support implemented for Windows for docker-pushrm"
-elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ]; then
+  elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ]; then
     echo "WARNING: No support implemented for Windows for docker-pushrm"
+  fi
 fi
 
 echo "*** Done updating meta files and generating documentation ***"
