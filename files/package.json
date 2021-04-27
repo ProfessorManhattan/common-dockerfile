@@ -13,7 +13,7 @@
     "info": "npm-scripts-info",
     "postinstall": "husky install && bash .update.sh",
     "prepare-release": "run-s update test version",
-    "shell": "",
+    "shell": "docker run -it --rm megabytelabs/dockerfile-project:latest /bin/sh",
     "test": "run-s test:*",
     "test:docker": "docker run -v ${PWD}:/work -w /work hadolint/hadolint:latest hadolint Dockerfile",
     "test:prettier": "prettier \"{*.json,*.sh,*.yml}\" --list-different",
