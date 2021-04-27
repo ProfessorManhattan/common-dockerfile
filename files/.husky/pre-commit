@@ -4,8 +4,6 @@
 npx lint-staged
 echo "Running 'npm run test'"
 npm run test
-echo "Linting the Dockerfile"
-docker run -v ${PWD}:/work -w /work hadolint/hadolint:latest hadolint Dockerfile
 echo "Checking for spelling errors"
 files=$(git diff --cached --name-only)
 npx cspell --no-summary --config ./.modules/shared/.cspell.json $files || echo "Review the list of possible misspelled words above and correct anything that needs changing."
