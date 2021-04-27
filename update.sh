@@ -80,6 +80,11 @@ npx -y @appnest/readme generate --config __bp.json --input ./.modules/docs/bluep
 npx -y @appnest/readme generate --config __bp.json --input ./.modules/docs/$BLUEPRINT_README_FILE | true
 rm __bp.json
 
+if [ "$DOCKERFILE_PROJECT_TYPE" == "ci-pipeline" ]; then
+  PACKAGE_SLIM_BUILD=$(cat package.json | jq '.scripts."build:slim"' | cut -d '"' -f 2)
+  sed -i .bak "s/DOCKER_SLIM_BUILD_COMMAND/${PACKAGE_SLIM_BUILD}/g" README.md
+fi
+
 # Remove formatting error
 sed -i .bak 's/](#-/](#/g' README.md
 rm README.md.bak | true
