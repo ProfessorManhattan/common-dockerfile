@@ -98,4 +98,8 @@ rm CONTRIBUTING.md.bak | true
 # Ensure .blueprint.json is formatted properly
 npx prettier --write .blueprint.json
 
+# Update references to project name in package.json
+PACKAGE_NAME=$(cat package.json | jq '.name' | cut -d '"' -f 2)
+sed -i .bak "s^dockerfile-project^${PACKAGE_NAME}^g" package.json
+
 echo "*** Done updating meta files and generating documentation ***"
