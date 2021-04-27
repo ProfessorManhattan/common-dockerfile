@@ -14,8 +14,8 @@ else
   git checkout master && git pull origin master
   cd ../..
 fi
-
-source "./modules/shared/update.lib.sh"
+pwd
+source "../shared/update.lib.sh"
 
 ensure_node_installed
 ensure_jq_installed
