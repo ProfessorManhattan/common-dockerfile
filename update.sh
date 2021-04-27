@@ -13,7 +13,7 @@ command_exists () {
 # TODO Check if software is available outside of the megabytelabs install dir
 # Install user-scoped software dependencies
 if grep -sq 'docker\|lxc' /proc/1/cgroup; then
-  echo "The environment is a Docker container so user-scoped software dependencies are not being installed"
+  echo "This environment appears to be a Docker container. Skipping the installation of user-scoped software dependencies."
 else
   mkdir -p $HOME/.docker/cli-plugins
   if [ "$(uname)" == "Darwin" ]; then
