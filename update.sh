@@ -10,7 +10,6 @@ command_exists () {
     type "$1" &> /dev/null ;
 }
 
-# TODO Check if software is available outside of the megabytelabs install dir
 # Install user-scoped software dependencies
 if grep -sq 'docker\|lxc' /proc/1/cgroup; then
   echo "This environment appears to be a Docker container. Skipping the installation of user-scoped software dependencies."
