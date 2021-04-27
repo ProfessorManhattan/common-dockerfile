@@ -9,7 +9,7 @@
     "build:latest": "docker build --tag megabytelabs/dockerfile-project:latest .",
     "build:slim": "docker-slim build --tag megabytelabs/dockerfile-project:slim --http-probe=false DOCKER_SLIM_COMMAND_HERE",
     "commit": "git-cz",
-    "dockerhub": "run -s dockerhub:*",
+    "dockerhub": "run-s dockerhub:*",
     "dockerhub:login": "docker login",
     "dockerhub:publish": "npx lint-staged && run-s prepare-release && docker push megabytelabs/dockerfile-project:latest && docker push megabytelabs/dockerfile-project:slim",
     "fix": "run-s fix:*",
