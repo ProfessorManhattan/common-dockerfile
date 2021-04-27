@@ -12,6 +12,7 @@
     "dockerhub": "run-s dockerhub:*",
     "dockerhub:login": "docker login",
     "dockerhub:publish": "npx lint-staged && run-s prepare-release && docker push megabytelabs/dockerfile-project:latest && docker push megabytelabs/dockerfile-project:slim",
+    "dockerhub:readme": "docker pushrm megabytelabs/dockerfile-project",
     "fix": "run-s fix:*",
     "fix:prettier": "prettier \"{*.json,*.sh,*.yml}\" --write",
     "info": "npm-scripts-info",
