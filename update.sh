@@ -119,9 +119,12 @@ if [ ! -f ./slim.report.json ]; then
 fi
 
 # Inject the image size into the description
+BLUEPRINT_PACKAGE_DESCRIPTION=$(cat .blueprint.json | jq '.description_template' | cut -d '"' -f 2)
 SLIM_IMAGE_SIZE=$(cat slim.report.json | jq '.minified_image_size_human' | cut -d '"' -f 2)
+jq --arg a "${BLUEPRINT_PACKAGE_DESCRIPTION}" '.description = $a' package.json > __jq.json && mv __jq.json package.json
 sed -i .bak "s^SLIM_IMAGE_SIZE^${SLIM_IMAGE_SIZE}^g" package.json
 rm package.json.bak | true
+npx prettier-package-json --write
 
 # Ensure slim.report.json is properly formatted
 npx prettier --write slim.report.json
