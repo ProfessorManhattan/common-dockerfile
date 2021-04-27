@@ -133,14 +133,16 @@ if [ "$(uname)" == "Darwin" ]; then
       chmod +x $HOME/.docker/cli-plugins/docker-pushrm
     fi
     DOCKER_SLIM_DOWNLOAD_LINK=https://downloads.dockerslim.com/releases/1.35.0/dist_mac.zip
-    wget $DOCKER_SLIM_DOWNLOAD_LINK
-    mkdir -p $HOME/.config/megabytelabs/bin
-    unzip dist_mac.zip
-    cp ./dist_mac/* $HOME/.config/megabytelabs/bin/
-    rm dist_mac.zip
-    export PATH="$HOME/.config/megabytelabs/bin:$PATH"
-    if [[ $(grep -L 'PATH=$HOME/.config/megabytelabs/bin' "$HOME/.bash_profile") ]]; then
-      echo 'export PATH=$HOME/.config/megabytelabs/bin:$PATH' >> $HOME/.bash_profile
+    if [ ! -f $HOME/.config/megabytelabs/bin/docker-slim ]; then
+      wget $DOCKER_SLIM_DOWNLOAD_LINK
+      mkdir -p $HOME/.config/megabytelabs/bin
+      unzip dist_mac.zip
+      cp ./dist_mac/* $HOME/.config/megabytelabs/bin/
+      rm dist_mac.zip
+      export PATH="$HOME/.config/megabytelabs/bin:$PATH"
+      if [[ $(grep -L 'PATH=$HOME/.config/megabytelabs/bin' "$HOME/.bash_profile") ]]; then
+        echo 'export PATH=$HOME/.config/megabytelabs/bin:$PATH' >> $HOME/.bash_profile
+      fi
     fi
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     DOCKER_PUSHRM_DOWNLOAD_LINK=https://github.com/christian-korneck/docker-pushrm/releases/download/v1.7.0/docker-pushrm_linux_amd64
@@ -150,12 +152,15 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
       chmod +x $HOME/.docker/cli-plugins/docker-pushrm
     fi
     DOCKER_SLIM_DOWNLOAD_LINK=https://downloads.dockerslim.com/releases/1.35.0/dist_linux.tar.gz
-    wget $DOCKER_SLIM_DOWNLOAD_LINK
-    mkdir -p $HOME/.config/megabytelabs/bin
-    tar -zxvf dist_linux.tar.gz -C $HOME/.config/megabytelabs/bin
-    export PATH="$HOME/.config/megabytelabs/bin:$PATH"
-    if [[ $(grep -L 'PATH=$HOME/.config/megabytelabs/bin' "$HOME/.bashrc") ]]; then
-      echo 'export PATH=$HOME/.config/megabytelabs/bin:$PATH' >> $HOME/.bashrc
+    if [ ! -f $HOME/.config/megabytelabs/bin/docker-slim ]; then
+      wget $DOCKER_SLIM_DOWNLOAD_LINK
+      mkdir -p $HOME/.config/megabytelabs/bin
+      tar -zxvf dist_linux.tar.gz -C $HOME/.config/megabytelabs/bin
+      rm dist_linux.tar.gz
+      export PATH="$HOME/.config/megabytelabs/bin:$PATH"
+      if [[ $(grep -L 'PATH=$HOME/.config/megabytelabs/bin' "$HOME/.bashrc") ]]; then
+        echo 'export PATH=$HOME/.config/megabytelabs/bin:$PATH' >> $HOME/.bashrc
+      fi
     fi
 elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
     echo "WARNING: No support implemented for Windows for docker-pushrm"
