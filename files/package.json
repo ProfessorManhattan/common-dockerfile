@@ -7,7 +7,7 @@
   "scripts": {
     "build": "run-s build:*",
     "build:latest": "docker build --tag megabytelabs/dockerfile-project:latest .",
-    "build:slim": "docker-slim build --tag megabytelabs/dockerfile-project:slim --http-probe=false DOCKER_SLIM_COMMAND_HERE",
+    "build:slim": "docker-slim build --tag megabytelabs/dockerfile-project:slim --http-probe=false DOCKER_SLIM_COMMAND_HERE && npx prettier --write slim.report.json",
     "commit": "git-cz",
     "dockerhub": "run-s dockerhub:*",
     "dockerhub:login": "docker login",
@@ -21,6 +21,7 @@
     "sizes": "docker images",
     "test": "run-s test:*",
     "test:docker": "docker run -v ${PWD}:/work -w /work hadolint/hadolint:latest hadolint Dockerfile",
+    "test:preprettier": "prettier --write slim.report.json && prettier --write .blueprint.json",
     "test:prettier": "prettier \"{*.json,*.sh,*.yml}\" --list-different",
     "test:shellcheck": "find . -type d \\( -name .cache -o -name .git -o -name .husky -o -name .modules -o -name node_modules \\) -prune -false -o -name .update.sh -prune -o -type f -name \\*.sh -print0 | xargs -0 -r -n1 shellcheck",
     "update": "bash .update.sh",

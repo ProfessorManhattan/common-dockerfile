@@ -123,4 +123,7 @@ SLIM_IMAGE_SIZE=$(cat slim.report.json | jq '.minified_image_size_human' | cut -
 sed -i .bak "s^SLIM_IMAGE_SIZE^${SLIM_IMAGE_SIZE}^g" package.json
 rm package.json.bak | true
 
+# Ensure slim.report.json is properly formatted
+npx prettier --write slim.report.json
+
 echo "*** Done updating meta files and generating documentation ***"
