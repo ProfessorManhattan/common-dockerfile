@@ -23,7 +23,7 @@ else
       chmod +x $HOME/.docker/cli-plugins/docker-pushrm
     fi
     DOCKER_SLIM_DOWNLOAD_LINK=https://downloads.dockerslim.com/releases/1.35.0/dist_mac.zip
-    if [ ! -f $HOME/.config/megabytelabs/bin/docker-slim ] && [ ! command_exists docker-slim ]; then
+    if [ ! -f $HOME/.config/megabytelabs/bin/docker-slim ] && [ ! command_exists "docker-slim" ]; then
       wget $DOCKER_SLIM_DOWNLOAD_LINK
       unzip dist_mac.zip
       cp ./dist_mac/* $HOME/.config/megabytelabs/bin/
@@ -34,7 +34,7 @@ else
       fi
     fi
     JQ_DOWNLOAD_LINK=https://github.com/stedolan/jq/releases/download/jq-1.6/jq-osx-amd64
-    if [ ! -f $HOME/.config/megabytelabs/bin/jq ] && [ ! command_exists jq ]; then
+    if [ ! -f $HOME/.config/megabytelabs/bin/jq ] && [ ! command_exists "jq" ]; then
       wget $JQ_DOWNLOAD_LINK -O $HOME/.config/megabytelabs/bin/jq
     fi
     chmod +x $HOME/.config/megabytelabs/bin/*
