@@ -7,7 +7,7 @@
   "scripts": {
     "build": "run-s build:*",
     "build:latest": "docker build --tag megabytelabs/dockerfile-project:latest .",
-    "build:slim": "docker-slim build --tag megabytelabs/dockerfile-project:slim DOCKER_SLIM_COMMAND_HERE && npx prettier --write slim.report.json",
+    "build:slim": "docker-slim build --tag megabytelabs/dockerfile-project:slim DOCKER_SLIM_COMMAND_HERE megabytelabs/dockerfile-project:latest && npx prettier --write slim.report.json",
     "commit": "git-cz",
     "dockerhub": "run-s dockerhub:*",
     "dockerhub:login": "docker login",
