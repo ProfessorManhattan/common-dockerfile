@@ -15,9 +15,9 @@
     "prepare-release": "run-s update test version",
     "shell": "",
     "test": "run-s test:*",
-    "test:docker": "",
+    "test:docker": "docker run -v ${PWD}:/work -w /work hadolint/hadolint:latest hadolint Dockerfile",
     "test:prettier": "prettier \"{*.json,*.sh,*.yml}\" --list-different",
-    "test:shellcheck": "shellcheck *.sh",
+    "test:shellcheck": "find . -type d \\( -name .cache -o -name .git -o -name .husky -o -name .modules -o -name node_modules \\) -prune -false -o -name .update.sh -prune -o -type f -name \\*.sh -print0 | xargs -0 -r -n1 shellcheck",
     "update": "bash .update.sh",
     "version": "standard-version --no-verify"
   },
