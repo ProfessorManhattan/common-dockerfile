@@ -4,9 +4,7 @@
 # installed and then copies over base files from the modules. It also generates the
 # documentation.
 
-set -ex
-
-REPO_TYPE=dockerfile
+export REPO_TYPE=dockerfile
 git submodule update --init --recursive
 if [ ! -f "./.modules/${REPO_TYPE}/update.sh" ]; then
   mkdir -p ./.modules
