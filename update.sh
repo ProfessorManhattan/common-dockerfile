@@ -4,8 +4,6 @@
 # installed and then copies over base files from the modules. It also generates the
 # documentation and performs other miscellaneous tasks.
 
-set -ex
-
 if [ ! -d "./.modules/shared" ]; then
   mkdir -p ./.modules
   git submodule add -b master https://gitlab.com/megabyte-space/common/shared.git ./.modules/shared
