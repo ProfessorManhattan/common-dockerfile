@@ -35,3 +35,5 @@ copy_project_files_and_generate_package_json
 generate_documentation
 
 misc_fixes
+
+cp ./.modules/$REPO_TYPE/.start.sh .start.sh
