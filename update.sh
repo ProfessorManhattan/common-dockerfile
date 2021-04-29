@@ -12,7 +12,7 @@ else
   git checkout master && git pull origin master
   cd ../..
 fi
-pwd
+
 source "./.modules/shared/update.lib.sh"
 
 ensure_node_installed
