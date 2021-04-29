@@ -10,7 +10,7 @@ curl -sL https://git.io/_has | bash -s docker git jq node npm wget
 export REPO_TYPE=dockerfile
 git submodule update --init --recursive
 if [ ! -f "./.modules/${REPO_TYPE}/update.sh" ]; then
-  mkdir -p ./.modules
+  mkdir -p ./.modules || exit
   git submodule add -b master https://gitlab.com/megabyte-space/common/$REPO_TYPE.git ./.modules/$REPO_TYPE
 else
   cd ./.modules/$REPO_TYPE || exit
