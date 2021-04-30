@@ -92,7 +92,7 @@
   },
   "standard-version": {
     "scripts": {
-      "precommit": "run-s update && git add --all"
+      "precommit": "run-s update && git status && git add --all"
     }
   }
 }
