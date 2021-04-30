@@ -92,7 +92,7 @@
   },
   "standard-version": {
     "scripts": {
-      "precommit": "run-s update && git add --all && git commit -m 'chore(readme-version) Updating README.md version.' --no-verify"
+      "precommit": "run-s update && git add --all && git commit -m \"chore(readme-version) Updating README.md version.\" --no-verify"
     }
   }
 }
