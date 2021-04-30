@@ -19,7 +19,7 @@
     "publish:prepare": "npx lint-staged && run-s prepare-release && git push --follow-tags origin master && run-s build && git add slim.report.json && git commit -m 'chore(slim-report) Adding slim.report.json.' && git push origin master",
     "publish:publish": "docker push megabytelabs/dockerfile-project:latest && docker push megabytelabs/dockerfile-project:$npm_package_version && docker push megabytelabs/dockerfile-project:slim && docker push megabytelabs/dockerfile-project:$npm_package_version-slim",
     "publish:readme": "docker pushrm megabytelabs/dockerfile-project",
-    "publish:description": "SHORT_DESCRIPTION=$(cat .blueprint.json | jq '.dockerhub_description' | cut -d '\"' -f 2) && docker pushrm --short \"${SHORT_DESCRIPTION}\" megabytelabs/${npm_package_name}",
+    "publish:readme-description": "SHORT_DESCRIPTION=$(cat .blueprint.json | jq '.dockerhub_description' | cut -d '\"' -f 2) && docker pushrm --short \"${SHORT_DESCRIPTION}\" megabytelabs/${npm_package_name}",
     "scan": "run-s build scan:*",
     "scan:latest": "docker scan --file Dockerfile megabytelabs/dockerfile-project:latest",
     "scan:login": "docker scan --accept-license --login",
