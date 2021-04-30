@@ -12,7 +12,6 @@
     "fix": "run-s fix:*",
     "fix:prettier": "prettier \"{*.json,*.sh,*.yml}\" --write",
     "info": "npm-scripts-info",
-    "postbump": "run-s update && git add --all && git commit -m 'chore(postbump) Post version bump updates.'",
     "postinstall": "husky install && run-s update",
     "prepare-release": "run-s update test version",
     "publish": "run-s publish:*",
@@ -90,5 +89,8 @@
     "test": "Validates the Dockerfile and performs project linting",
     "update": "Runs .update.sh to automatically update meta files and documentation",
     "version": "Used by 'npm run prepare-release' to update the CHANGELOG and app version"
+  },
+  "standard-version": {
+    "postbump": "run-s update && git add --all && git commit -m 'chore(postbump) Post version bump updates.'"
   }
 }
