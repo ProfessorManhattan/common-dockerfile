@@ -18,7 +18,7 @@
     "publish:login": "docker login",
     "publish:prepare": "npx lint-staged && run-s prepare-release && git push --follow-tags origin master && run-s build",
     "publish:publish": "docker push megabytelabs/dockerfile-project:latest && docker push megabytelabs/dockerfile-project:$npm_package_version && docker push megabytelabs/dockerfile-project:slim && docker push megabytelabs/dockerfile-project:$npm_package_version-slim",
-    "publish:readme": "run-s update && docker pushrm megabytelabs/dockerfile-project",
+    "publish:readme": "docker pushrm megabytelabs/dockerfile-project",
     "scan": "run-s build scan:*",
     "scan:latest": "docker scan --file Dockerfile megabytelabs/dockerfile-project:latest",
     "scan:login": "docker scan --accept-license --login",
@@ -91,6 +91,8 @@
     "version": "Used by 'npm run prepare-release' to update the CHANGELOG and app version"
   },
   "standard-version": {
-    "postbump": "run-s update && git add --all && git commit -m 'chore(readme-version) Updating README.md version reference.'"
+    "scripts": {
+      "postbump": "run-s update && git add --all && git commit -m 'chore(readme-version) Updating README.md version reference.'"
+    }
   }
 }
