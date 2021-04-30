@@ -92,7 +92,7 @@
   },
   "standard-version": {
     "scripts": {
-      "prerelease": "git add README.md && git add slim.report.json"
+      "prerelease": "git add README.md"
     }
   }
 }
