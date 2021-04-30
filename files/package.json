@@ -13,7 +13,7 @@
     "fix:prettier": "prettier \"{*.json,*.sh,*.yml}\" --write",
     "info": "npm-scripts-info",
     "postinstall": "husky install && run-s update",
-    "prepare-release": "run-s update test version",
+    "prepare-release": "run-s test build update test version",
     "publish": "run-s publish:*",
     "publish:login": "docker login",
     "publish:prepare": "npx lint-staged && run-s prepare-release && git push --follow-tags origin master && run-s build",
