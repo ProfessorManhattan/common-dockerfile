@@ -92,7 +92,7 @@
   },
   "standard-version": {
     "scripts": {
-      "postbump": "run-s update && git add --all && git commit -m 'chore(readme-version) Updating README.md version reference.'"
+      "precommit": "run-s update && git add --all"
     }
   }
 }
