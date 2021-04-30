@@ -32,7 +32,7 @@
     "test:prettier": "prettier \"{*.json,*.sh,*.yml}\" --list-different",
     "test:shellcheck": "find . -type d \\( -name .cache -o -name .git -o -name .husky -o -name .modules -o -name node_modules \\) -prune -false -o -name .start.sh -prune -o -type f -name \\*.sh -print0 | xargs -0 -r -n1 shellcheck",
     "update": "bash .start.sh",
-    "version": "standard-version --no-verify"
+    "version": "standard-version -a --no-verify"
   },
   "config": {
     "commitizen": {
@@ -92,7 +92,7 @@
   },
   "standard-version": {
     "scripts": {
-      "precommit": "git add --all && git commit -m \"chore(readme-version) Updating README.md version.\" --no-verify"
+      "prerelease": "git add README.md"
     }
   }
 }
