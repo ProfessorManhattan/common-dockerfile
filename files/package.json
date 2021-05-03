@@ -68,7 +68,7 @@
     }
   ],
   "lint-staged": {
-    "*.{json,sh,yml}": [
+    "**/*.{json,sh,yml}": [
       "prettier --write"
     ],
     "package.json": [
