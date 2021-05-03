@@ -91,5 +91,10 @@
     "test": "Validates the Dockerfile, tests the Docker image, and performs project linting",
     "update": "Runs .start.sh to automatically update meta files and documentation",
     "version": "Used by 'npm run prepare-release' to update the CHANGELOG and app version"
+  },
+  "standard-version": {
+    "scripts": {
+      "prerelease": "git add README.md"
+    }
   }
 }
