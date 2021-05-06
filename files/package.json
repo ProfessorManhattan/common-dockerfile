@@ -11,6 +11,7 @@
     "commit": "git-cz",
     "fix": "run-s fix:*",
     "fix:prettier": "prettier \"{*.json,*.sh,*.yml}\" --write",
+    "fix:shellcheck": "shellcheck -f diff Dockerfile | git apply",
     "info": "npm-scripts-info",
     "postinstall": "husky install && run-s update",
     "prepare-release": "run-s test build update test version",
