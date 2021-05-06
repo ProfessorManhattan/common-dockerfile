@@ -7,7 +7,8 @@
   "scripts": {
     "build": "run-s build:*",
     "build:latest": "docker build --build-arg BUILD_DATE=$(git show -s --format=%cI) --build-arg REVISION=$(git rev-parse HEAD) --build-arg VERSION=${npm_package_version} --tag megabytelabs/dockerfile-project:latest --tag megabytelabs/dockerfile-project:${npm_package_version} .",
-    "build:slim": "docker-slim build --tag megabytelabs/dockerfile-project:slim --tag megabytelabs/dockerfile-project:${npm_package_version}-slim DOCKER_SLIM_COMMAND_HERE megabytelabs/dockerfile-project:latest && prettier --write slim.report.json",
+    "build:slim": "docker-slim build --tag megabytelabs/dockerfile-project:slim DOCKER_SLIM_COMMAND_HERE megabytelabs/dockerfile-project:latest && prettier --write slim.report.json",
+    "slim:slim-version": "docker-slim build --tag megabytelabs/dockerfile-project:${npm_package_version}-slim DOCKER_SLIM_COMMAND_HERE megabytelabs/dockerfile-project:latest && prettier --write slim.report.json",
     "commit": "git-cz",
     "fix": "run-s fix:*",
     "fix:prettier": "prettier \"{*.json,*.sh,*.yml}\" --write",
