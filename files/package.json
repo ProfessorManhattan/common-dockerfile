@@ -96,7 +96,7 @@
   },
   "standard-version": {
     "scripts": {
-      "prerelease": "git add README.md"
+      "prerelease": "git add --all"
     }
   }
 }
