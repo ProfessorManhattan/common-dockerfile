@@ -18,7 +18,8 @@ if [ ! -f "./.modules/${REPO_TYPE}/update.sh" ]; then
 else
   cd ./.modules/$REPO_TYPE || exit
   git config pull.rebase true
-  git checkout master && git pull --depth 1 --allow-unrelated-histories origin master
+  git checkout master
+  git pull --depth 1 --allow-unrelated-histories --rebase origin master
   cd ../.. || exit
 fi
 bash ./.modules/$REPO_TYPE/update.sh
