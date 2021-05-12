@@ -14,10 +14,10 @@ export REPO_TYPE=dockerfile
 git submodule update --init --recursive
 if [ ! -f "./.modules/${REPO_TYPE}/update.sh" ]; then
   mkdir -p ./.modules || exit
-  git submodule add -b master --depth 1 https://gitlab.com/megabyte-space/common/$REPO_TYPE.git ./.modules/$REPO_TYPE
+  git submodule add -b master https://gitlab.com/megabyte-space/common/$REPO_TYPE.git ./.modules/$REPO_TYPE
 else
   cd ./.modules/$REPO_TYPE || exit
-  git checkout master && git pull --rebase origin master --allow-unrelated-histories
+  git checkout master && git pull origin master
   cd ../.. || exit
 fi
 bash ./.modules/$REPO_TYPE/update.sh
