@@ -17,7 +17,7 @@
     "prepare-release": "run-s update test build update test version",
     "publish": "run-s publish:*",
     "publish:login": "docker login",
-    "publish:prepare": "npx lint-staged && run-s prepare-release && git push --follow-tags origin master && run-s build && git add slim.report.json && git commit -m 'chore(slim-report) Adding slim.report.json.' && git push origin master",
+    "publish:prepare": "npx lint-staged && run-s prepare-release && git push --follow-tags origin master && run-s build && (if [ -f slim.report.json ]; then (git add slim.report.json && git commit -m 'chore(slim-report) Adding slim.report.json.' && git push origin master); fi)",
     "publish:publish": "docker push megabytelabs/dockerfile-project:latest && docker push megabytelabs/dockerfile-project:${npm_package_version}",
     "publish:publish-slim": "docker push megabytelabs/dockerfile-project:slim && docker push megabytelabs/dockerfile-project:${npm_package_version}-slim",
     "publish:readme": "docker pushrm megabytelabs/dockerfile-project",
