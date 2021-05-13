@@ -17,7 +17,7 @@ if [ ! -f "./.modules/${REPO_TYPE}/update.sh" ]; then
   git submodule add -b master https://gitlab.com/megabyte-space/common/$REPO_TYPE.git ./.modules/$REPO_TYPE
 else
   cd ./.modules/$REPO_TYPE || exit
-  git checkout master && git pull origin master
+  git checkout master && git pull origin master --ff-only
   cd ../.. || exit
 fi
 bash ./.modules/$REPO_TYPE/update.sh
