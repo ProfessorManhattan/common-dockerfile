@@ -34,7 +34,7 @@
     "test:docker": "docker run -v ${PWD}:/work -w /work hadolint/hadolint:latest hadolint Dockerfile",
     "test:preprettier": "if [ -f slim.report.json ]; then prettier --write slim.report.json; fi && if [ -f .blueprint.json ]; then prettier --write .blueprint.json; fi",
     "test:prettier": "prettier \"{*.json,*.sh,*.yml}\" --list-different",
-    "test:shellcheck": "find . -type d \\( -name .cache -o -name .git -o -name .husky -o -name .modules -o -name node_modules -o -name test \\) -prune -false -o -name .start.sh -prune -o -type f -name \\*.sh -print0 | xargs -0 -r -n1 shellcheck",
+    "test:shellcheck": "find . -type d \\( -name .cache -o -name .git -o -name .modules  -o -name node_modules -o -name .husky \\) -prune -o -type f -name \\*.sh -print0 | xargs -0 -r -n1 shellcheck",
     "test:unit": "bash ./test/test.sh",
     "update": "bash .start.sh && cp ./.modules/dockerfile/.start.sh .start.sh",
     "version": "standard-version -a --no-verify"
