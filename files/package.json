@@ -21,7 +21,7 @@
     "publish:publish": "docker push megabytelabs/dockerfile-project:latest && docker push megabytelabs/dockerfile-project:${npm_package_version}",
     "publish:publish-slim": "docker push megabytelabs/dockerfile-project:slim && docker push megabytelabs/dockerfile-project:${npm_package_version}-slim",
     "publish:readme": "docker pushrm megabytelabs/dockerfile-project",
-    "publish:readme-description": "SHORT_DESCRIPTION=$(cat .blueprint.json | jq '.dockerhub_description' | cut -d '\"' -f 2) && PACKAGE_SLUG=$(cat .blueprint.json | jq '.slug' | cut -d '\"' -f 2) && docker pushrm --short \"${SHORT_DESCRIPTION}\" megabytelabs/${PACKAGE_SLUG}",
+    "publish:readme-description": "SHORT_DESCRIPTION=$(jq -r '.dockerhub_description' .blueprint.json) && PACKAGE_SLUG=$(jq -r '.slug' .blueprint.json) && docker pushrm --short \"${SHORT_DESCRIPTION}\" megabytelabs/${PACKAGE_SLUG}",
     "scan": "run-s build scan:*",
     "scan:_login": "docker scan --accept-license --login",
     "scan:latest": "docker scan --file Dockerfile megabytelabs/dockerfile-project:latest",
