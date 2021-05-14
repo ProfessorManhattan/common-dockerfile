@@ -4,8 +4,6 @@
 # their outputs to ensure they are the same. It does this for each
 # folder located in the test folder.
 
-set -e
-
 # shellcheck disable=SC1091
 source "./.modules/shared/update.lib.sh"
 
