@@ -2,7 +2,7 @@
 stages:
   - update
   - lint
-  - publish_test
+  - test
   - publish
 
 include:
