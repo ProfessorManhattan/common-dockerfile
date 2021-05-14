@@ -18,9 +18,9 @@ fi
 
 for TEST_SCENARIO in test/*/; do
   log "Running the regular image and capturing the output for the ${TEST_SCENARIO} scenario"
-  LATEST_OUTPUT=$(docker run -v "${PWD}:/work/${TEST_SCENARIO}" -w /work megabytelabs/DOCKER_SLUG:latest DOCKER_COMMAND)
+  LATEST_OUTPUT=$(docker run -v "${PWD}/${TEST_SCENARIO}:/work" -w /work megabytelabs/DOCKER_SLUG:latest DOCKER_COMMAND)
   log "Running the slim image and capturing the output for the ${TEST_SCENARIO} scenario"
-  SLIM_OUTPUT=$(docker run -v "${PWD}:/work/${TEST_SCENARIO}" -w /work megabytelabs/DOCKER_SLUG:slim DOCKER_COMMAND)
+  SLIM_OUTPUT=$(docker run -v "${PWD}/${TEST_SCENARIO}:/work" -w /work megabytelabs/DOCKER_SLUG:slim DOCKER_COMMAND)
   log "Comparing the output from the regular image and slim image for the ${TEST_SCENARIO} scenario"
   if [ "$LATEST_OUTPUT" == "$SLIM_OUTPUT" ]; then
     success "The output from the slim image matches the output from the regular image for the ${TEST_SCENARIO} scenario"
