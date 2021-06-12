@@ -6,7 +6,7 @@
   "homepage": "https://megabyte.space",
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/megabyte-labs/dockerfile/DOCKER_PROJECT_SUBGROUP/DOCKER_PROJECT_SLUG.git"
+    "url": "git+https://gitlab.com/megabyte-labs/dockerfile/DOCKER_PROJECT_SUBGROUP/DOCKER_PROJECT_SLUG.git"
   },
   "bugs": {
     "email": "help@megabyte.space",
