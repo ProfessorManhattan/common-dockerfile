@@ -16,6 +16,7 @@
     "postinstall": "husky install && run-s update",
     "prepare-release": "if [[ \"$(docker images -q megabytelabs/dockerfile-project:latest 2> /dev/null)\" == '' ]] || [[ \"$(docker images -q megabytelabs/dockerfile-project:slim 2> /dev/null)\" == '' ]]; then run-s build; fi && run-s update test build update test version",
     "publish": "run-s publish:*",
+    "publish:_noslim": "run-s publish:login && npx lint-staged && run-s build:latest update test build:latest update test version && git push --follow-tags origin master && run-s build publish:publish publish:readme publish:readme-description",
     "publish:login": "docker login",
     "publish:prepare": "npx lint-staged && run-s prepare-release && git push --follow-tags origin master && run-s build && (if [ -f slim.report.json ]; then (git add slim.report.json && git commit -m 'chore(slim-report) Adding slim.report.json.' && git push origin master); fi)",
     "publish:publish": "docker push megabytelabs/dockerfile-project:latest && docker push megabytelabs/dockerfile-project:${npm_package_version}",
