@@ -24,7 +24,7 @@
     "publish:readme": "docker pushrm megabytelabs/dockerfile-project",
     "publish:readme-description": "SHORT_DESCRIPTION=$(jq -r '.dockerhub_description' .blueprint.json) && PACKAGE_SLUG=$(jq -r '.slug_full' .blueprint.json) && docker pushrm --short \"${SHORT_DESCRIPTION}\" megabytelabs/${PACKAGE_SLUG}",
     "scan": "run-s build scan:*",
-    "scan:login": "docker scan --accept-license --login",
+    "scan:_login": "docker scan --accept-license --login",
     "scan:latest": "docker scan --file Dockerfile megabytelabs/dockerfile-project:latest",
     "scan:slim": "docker scan --file Dockerfile megabytelabs/dockerfile-project:slim",
     "shell": "docker run --cap-drop=ALL -it -v \"${PWD}:/work\" -w /work --entrypoint /bin/sh --rm megabytelabs/dockerfile-project:latest",
