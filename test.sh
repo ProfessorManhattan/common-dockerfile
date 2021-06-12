@@ -7,7 +7,7 @@
 # shellcheck disable=SC1091
 source "./.modules/shared/update.lib.sh"
 
-if [[ "$(docker images -q megabytelabs/DOCKER_SLUG:slim 2> /dev/null)" == "" ]] || [[ "$(docker images -q megabytelabs/DOCKER_SLUG:latest 2> /dev/null)" == "" ]]; then
+if [[ "$(docker images -q megabytelabs/DOCKER_SLUG:slim 2>/dev/null)" == "" ]] || [[ "$(docker images -q megabytelabs/DOCKER_SLUG:latest 2>/dev/null)" == "" ]]; then
   info "The images have not been built yet"
   log "Running 'npm run build'"
   npm run build
