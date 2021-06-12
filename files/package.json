@@ -3,6 +3,15 @@
   "description": "Node.js files/configurations that support the creation of Dockerfiles",
   "license": "MIT",
   "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
+  "homepage": "https://megabyte.space",
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/megabyte-labs/dockerfile/DOCKER_PROJECT_SUBGROUP/DOCKER_PROJECT_SLUG.git"
+  },
+  "bugs": {
+    "email": "help@megabyte.space",
+    "url": "https://gitlab.com/megabyte-labs/dockerfile/DOCKER_PROJECT_SUBGROUP/DOCKER_PROJECT_SLUG/-/issues"
+  },
   "version": "0.0.1",
   "scripts": {
     "_publish:noslim": "run-s publish:login && npx lint-staged && run-s build:latest update test build:latest update test version && git push --follow-tags origin master && run-s build publish:publish publish:readme publish:readme-description",
@@ -60,6 +69,17 @@
     "shellcheck": "^1.0.0",
     "standard-version": "^9.0.0"
   },
+  "keywords": [
+    "docker",
+    "dockerfile",
+    "alias",
+    "documentation",
+    "megabytelabs",
+    "professormanhattan"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
   "funding": [
     {
       "type": "opencollective",
@@ -71,7 +91,7 @@
     }
   ],
   "lint-staged": {
-    "**/*.{json,sh,yml}": [
+    "**/*.{json,sh,yml},Dockerfile": [
       "prettier --write"
     ],
     "package.json": [
