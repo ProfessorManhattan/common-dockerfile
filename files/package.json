@@ -92,7 +92,7 @@
     }
   ],
   "lint-staged": {
-    "**/*.{json,sh,yml},Dockerfile": [
+    "**/*.{json,sh,yml}": [
       "prettier --write"
     ],
     "package.json": [
