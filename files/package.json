@@ -119,7 +119,9 @@
   },
   "standard-version": {
     "scripts": {
-      "prerelease": "git add --all"
+      "prebump": "if grep -q \"CMD.\\[\\\"--version\\\"\\]\" Dockerfile; then docker run --cap-drop=ALL -e PY_COLORS=0 --rm megabytelabs/flake8:latest | perl -pe 'if(($v)=/([0-9]+([.][0-9]+)+)/){print\"$v\";exit}$_=\"\"'; fi",
+      "prerelease": "git add --all",
+      "pretag": "PACKAGE_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag -d v$PACKAGE_VERSION"
     }
   }
 }
