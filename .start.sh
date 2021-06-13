@@ -12,6 +12,7 @@ if [ "$container" != 'docker' ]; then
 fi
 
 export REPO_TYPE=dockerfile
+git pull origin master
 git submodule update --init --recursive
 if [ ! -f "./.modules/${REPO_TYPE}/update.sh" ]; then
   mkdir -p ./.modules || exit
