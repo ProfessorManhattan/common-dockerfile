@@ -44,7 +44,7 @@
     "test:docker": "docker run -v ${PWD}:/work -w /work hadolint/hadolint:latest hadolint Dockerfile",
     "test:preprettier": "if [ -f slim.report.json ]; then prettier --write slim.report.json; fi && if [ -f .blueprint.json ]; then prettier --write .blueprint.json; fi",
     "test:prettier": "prettier --list-different \"!{.husky/_/husky.sh,.gitmodules,.modules,Dockerfile,**/Dockerfile}\" .",
-    "test:shellcheck": "find . -type d \\( -name .cache -o -name .git -o -name .modules  -o -name node_modules -o -name .husky -o -name .start.sh -o -name test \\) -prune -o -type f \\( -name \\*.sh -o -name \\*.sh.j2 \\) -print0 | xargs -0 -r -n1 shellcheck",
+    "test:shellcheck": "find . -type d \\( -name .cache -o -name .git -o -name .modules  -o -name node_modules -o -name .husky \\) -prune -o -type f \\( -name \\*.sh -o -name \\*.sh.j2 \\) -print0 | xargs -0 -r -n1 shellcheck",
     "test:unit": "TEST_BYPASS=$(jq -r '.bypass_unit_test' .blueprint.json) && if [ $TEST_BYPASS != 'true' ]; then bash ./test/test.sh; fi",
     "update": "bash .start.sh && cp ./.modules/dockerfile/.start.sh .start.sh",
     "version": "standard-version -a --no-verify"
