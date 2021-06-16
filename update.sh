@@ -37,6 +37,7 @@ cp -Rf ./.modules/shared/.gitlab .
 cp -Rf ./.modules/shared/.vscode .
 cp ./.modules/shared/.editorconfig .editorconfig
 cp ./.modules/shared/CODE_OF_CONDUCT.md CODE_OF_CONDUCT.md
+cp ./.modules/shared/.prettierignore .prettierignore
 
 # Apply updates from shared files
 copy_project_files_and_generate_package_json
