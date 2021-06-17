@@ -2,7 +2,7 @@
 
 # This file tests the latest and slim build and then compares
 # their outputs to ensure they are the same. It does this for each
-# folder located in the test folder.
+# folder located in the slim_test folder.
 
 # shellcheck disable=SC1091
 source "./.modules/shared/update.lib.sh"
