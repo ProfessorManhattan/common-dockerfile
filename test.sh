@@ -14,7 +14,7 @@ if [[ "$(docker images -q megabytelabs/DOCKER_SLUG:slim 2>/dev/null)" == "" ]] |
   success "Finished building the images"
 fi
 
-for TEST_SCENARIO in test/*/; do
+for TEST_SCENARIO in slim_test/*/; do
   log "Running the regular image and capturing the output for the ${TEST_SCENARIO} scenario"
   LATEST_OUTPUT=$(docker run -v "${PWD}/${TEST_SCENARIO}:/work" -w /work megabytelabs/DOCKER_SLUG:latest DOCKER_COMMAND)
   log "Running the slim image and capturing the output for the ${TEST_SCENARIO} scenario"
