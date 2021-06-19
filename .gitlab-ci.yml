@@ -1,5 +1,6 @@
 ---
 stages:
+  - update
   - fix
   - lint
   - deploy
