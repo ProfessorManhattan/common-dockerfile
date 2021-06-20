@@ -9,7 +9,8 @@ tasks:
       DOCKER_COMMAND:
         sh: jq -r '.blueprint.docker_command' package.json
     cmds:
-      - |
-        if [ -d slim_test ]; then
-          cp .common/test.sh slim_test/test.sh
-          hbs --data .common/common.json
+      - cp .common/test.sh slim_test/test.sh
+      - hbs --data .common/common.json
+    preconditions:
+      - sh: test -d slim_test
+        msg: "Project does not contain a slim_test folder - skipping the slim_test bootstrap process"
