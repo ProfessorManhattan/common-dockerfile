@@ -13,4 +13,4 @@ tasks:
       - hbs --data .common/common.json
     preconditions:
       - sh: test -d slim_test
-        msg: "Project does not contain a slim_test folder - skipping the slim_test bootstrap process"
+        msg: 'Project does not contain a slim_test folder - skipping the slim_test bootstrap process'
