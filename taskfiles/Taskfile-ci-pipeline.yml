@@ -13,4 +13,3 @@ tasks:
         if [ -d slim_test ]; then
           cp .common/test.sh slim_test/test.sh
           hbs --data .common/common.json
-
