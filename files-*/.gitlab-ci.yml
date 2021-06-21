@@ -1,0 +1,16 @@
+---
+stages:
+  - update
+  - fix
+  - lint
+  - test
+  - publish
+
+include:
+  - remote: https://gitlab.com/megabyte-labs/ci/gitlab-ci-templates/-/raw/master/fix/prettier-fix.gitlab-ci.yml
+  - remote: https://gitlab.com/megabyte-labs/ci/gitlab-ci-templates/-/raw/master/lint/hadolint.gitlab-ci.yml
+  - remote: https://gitlab.com/megabyte-labs/ci/gitlab-ci-templates/-/raw/master/lint/prettier.gitlab-ci.yml
+  - remote: https://gitlab.com/megabyte-labs/ci/gitlab-ci-templates/-/raw/master/lint/shellcheck.gitlab-ci.yml
+  - remote: https://gitlab.com/megabyte-labs/ci/gitlab-ci-templates/-/raw/master/publish/dockerhub.gitlab-ci.yml
+  - remote: https://gitlab.com/megabyte-labs/ci/gitlab-ci-templates/-/raw/master/test/gitlab-registry.gitlab-ci.yml
+  - remote: https://gitlab.com/megabyte-labs/ci/gitlab-ci-templates/-/raw/master/update/update-project.gitlab-ci.yml
