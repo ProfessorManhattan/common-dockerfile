@@ -1,16 +1,4 @@
----
-version: '3'
-
-tasks:
-  bootstrap-slim-test:
-    vars:
-      SLUG:
-        sh: jq -r '.blueprint.slug' package.json
-      DOCKER_COMMAND:
-        sh: jq -r '.blueprint.docker_command' package.json
-    cmds:
-      - cp .common/test.sh slim_test/test.sh
-      - hbs --data .common/common.json
-    preconditions:
-      - sh: test -d slim_test
-        msg: 'Project does not contain a slim_test folder - skipping the slim_test bootstrap process'
+--- version: '3' tasks: bootstrap-slim-test: vars: SLUG: sh: jq -r '.blueprint.slug' package.json DOCKER_COMMAND: sh: jq
+-r '.blueprint.docker_command' package.json cmds: - cp .common/test.sh slim_test/test.sh - hbs --data
+.common/common.json preconditions: - sh: test -d slim_test msg: 'Project does not contain a slim_test folder - skipping
+the slim_test bootstrap process'
