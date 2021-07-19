@@ -1,9 +1,7 @@
-# Dockerfile Project Common Files
+# Megabyte Labs Common Files
 
-This repository includes common files that are shared throughout [our various Dockerfile repositories](https://gitlab.com/megabyte-labs/dockerfile). It is used in conjunction with the `.start.sh` file that is present in all our Dockerfile projects. The `.start.sh` file synchronizes various files from this repository.
+All of the projects in the Megabyte Labs eco-system inherit many of their files (e.g. configuration files) from a cascade of [common file repositories](https://gitlab.com/megabyte-labs/common). Each repository includes a bundle of shared files as a submodule. The submodule is located in the `.common/` folder in the root of each project. The submodule links to the common file repository that corresponds to the type of project (e.g. Ansible projects link their `.common/` folder to the [Ansible common files repository](https://gitlab.com/megabyte-labs/common/ansible)).
 
-In one of our Dockerfile repositories, you can run the following to synchronize with the upstream repositories:
+## Common Files
 
-```
-bash .start.sh
-```
+## Documentation
