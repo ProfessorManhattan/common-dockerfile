@@ -8,8 +8,8 @@ vars:
   REPOSITORY_TYPE: dockerfile
 
 includes:
-  common: ./.common/taskfiles-\{{.REPOSITORY_SUBTYPE}}/Taskfile-common.yml
-  docker: ./.common/taskfiles-\{{.REPOSITORY_SUBTYPE}}/Taskfile-docker.yml
-  fix: ./.common/taskfiles-\{{.REPOSITORY_SUBTYPE}}/Taskfile-fix.yml
-  lint: ./.common/taskfiles-\{{.REPOSITORY_SUBTYPE}}/Taskfile-lint.yml
-  software: ./.common/taskfiles-\{{.REPOSITORY_SUBTYPE}}/Taskfile-{{OS}}.yml
+  common: ./.common/taskfiles-app/Taskfile-common.yml
+  docker: ./.common/taskfiles-app/Taskfile-docker.yml
+  fix: ./.common/taskfiles-app/Taskfile-fix.yml
+  lint: ./.common/taskfiles-app/Taskfile-lint.yml
+  software: ./.common/taskfiles-app/Taskfile-{{OS}}.yml
