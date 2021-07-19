@@ -1,0 +1,15 @@
+---
+version: "3"
+
+output: prefixed
+
+vars:
+  REPOSITORY_SUBTYPE: ansible-molecule
+  REPOSITORY_TYPE: dockerfile
+
+includes:
+  common: ./.common/taskfiles-\{{.REPOSITORY_SUBTYPE}}/Taskfile-common.yml
+  docker: ./.common/taskfiles-\{{.REPOSITORY_SUBTYPE}}/Taskfile-docker.yml
+  fix: ./.common/taskfiles-\{{.REPOSITORY_SUBTYPE}}/Taskfile-fix.yml
+  lint: ./.common/taskfiles-\{{.REPOSITORY_SUBTYPE}}/Taskfile-lint.yml
+  software: ./.common/taskfiles-\{{.REPOSITORY_SUBTYPE}}/Taskfile-{{OS}}.yml
