@@ -1,50 +1,43 @@
 #!/bin/bash
+# shellcheck disable=SC1091
 
-# This script performs maintenance on Dockerfile repositories. It ensures git submodules are
-# installed and then copies over base files from the modules. It also generates the
-# documentation and performs other miscellaneous tasks.
+# @file .common/update.sh
+# @brief Ensures the project is up-to-date with the latest upstream changes
+# @description
+#   This script performs maintenance on this repository. It includes several bash script
+#   libraries and then it:
+#
+#   1. Ensures Node, jq, Task, and yq are installed
+#   2. Bootstraps the project by using Task to run initialization tasks which bootstrap the project
+#   3. Notifies the user about missing software dependencies that require root priviledges to install
 
 set -e
 
-# Ensure shared submodule is present
-if [ ! -d "./.modules/shared" ]; then
-  mkdir -p ./.modules
-  git submodule add -b master https://gitlab.com/megabyte-space/common/shared.git ./.modules/shared
-else
-  cd ./.modules/shared
-  git checkout master && git pull origin master --ff-only
-  cd ../..
+source "./.common/scripts/common.sh"
+source "./.common/scripts/log.sh"
+source "./.common/scripts/software.sh"
+source "./.common/scripts/notices.sh"
+source "./.common/lib.sh"
+
+if [ "${container:=}" != 'docker' ]; then
+  info "Ensuring Node.js, Task, jq, and yq are installed"
+  ensureNodeSetup &
+  ensureJQInstalled &
+  ensureTaskInstalled &
+  ensureYQInstalled &
+  wait
+  success "Node.js, Task, jq, and yq are all installed"
 fi
 
-# shellcheck disable=SC1091
-source "./.modules/shared/update.lib.sh"
+export REPO_SUBTYPE=$(yq e '.vars.REPOSITORY_SUBTYPE' Taskfile.yml)
 
-# Install software dependencies if they are missing
-ensure_node_installed
-ensure_jq_installed
-ensure_dockerslim_installed
-ensure_docker_pushrm_installed
+cp ".common/files-$REPO_SUBTYPE/Taskfile.yml" Taskfile.yml
+task common:update
 
-# Ensure initctl file is present in root, if required
-add_initctl
+if [ "${container:=}" != 'docker' ]; then
+  missingDockerNotice
+fi
 
-# Ensure documentation partials submodule is present and in sync with master
-ensure_project_docs_submodule_latest
+success "Bootstrap process complete!"
 
-# Copy over files from the shared submodule
-cp -Rf ./.modules/shared/.github .
-cp -Rf ./.modules/shared/.gitlab .
-cp -Rf ./.modules/shared/.vscode .
-cp ./.modules/shared/.editorconfig .editorconfig
-cp ./.modules/shared/CODE_OF_CONDUCT.md CODE_OF_CONDUCT.md
-cp ./.modules/shared/.prettierignore .prettierignore
-
-# Apply updates from shared files
-copy_project_files_and_generate_package_json
-generate_documentation
-misc_fixes
-update_docker_labels
-add_docker_test_script
-
-# Ensure .start.sh is the latest version # TODO: Figure out how to make this work
-# cp ./.modules/$REPO_TYPE/.start.sh .start.sh
+cp .common/.start.sh .start.sh &
