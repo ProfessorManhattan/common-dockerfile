@@ -1,0 +1,130 @@
+{
+  "name": "dockerfile-project",
+  "description": "Node.js files/configurations that support the creation of Dockerfiles",
+  "license": "MIT",
+  "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
+  "homepage": "https://megabyte.space",
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/megabyte-labs/dockerfile/DOCKER_PROJECT_SUBGROUP/DOCKER_PROJECT_SLUG.git"
+  },
+  "bugs": {
+    "email": "help@megabyte.space",
+    "url": "https://gitlab.com/megabyte-labs/dockerfile/DOCKER_PROJECT_SUBGROUP/DOCKER_PROJECT_SLUG/-/issues"
+  },
+  "version": "0.0.1",
+  "scripts": {
+    "_publish:noslim": "run-s publish:login && npx lint-staged && run-s build:latest update test build:latest update test version && git push --follow-tags origin master && run-s build publish:publish publish:readme publish:readme-description",
+    "build": "run-s build:*",
+    "build:latest": "docker build --build-arg BUILD_DATE=$(git show -s --format=%cI) --build-arg REVISION=$(git rev-parse HEAD) --build-arg VERSION=${npm_package_version} --tag megabytelabs/dockerfile-project:latest --tag megabytelabs/dockerfile-project:${npm_package_version} .",
+    "build:slim": "docker-slim build --tag megabytelabs/dockerfile-project:slim DOCKER_SLIM_COMMAND_HERE megabytelabs/dockerfile-project:latest && prettier --write slim.report.json && docker tag megabytelabs/dockerfile-project:slim megabytelabs/dockerfile-project:${npm_package_version}-slim",
+    "commit": "git-cz",
+    "fix": "run-s fix:*",
+    "fix:prettier": "prettier --write .",
+    "fix:shellcheck": "find . -type d \\( -name .cache -o -name .git -o -name .modules  -o -name node_modules -o -name .husky -o -name slim_test \\) -prune -o -type f \\( -name \\*.sh -o -name \\*.sh.j2 \\) -print0 | xargs -0 shellcheck -f diff | git apply",
+    "info": "npm-scripts-info",
+    "misc:markdown-links": "find . -type d \\( -name .cache -o -name .git -o -name .github -o -name .gitlab -o -name .modules  -o -name node_modules \\) -prune -o -type f \\( -name \\*.md \\) -print0 | xargs -0 -r -n1 markdown-link-check",
+    "postinstall": "husky install && run-s update",
+    "prepare-release": "if [[ \"$(docker images -q megabytelabs/dockerfile-project:latest 2> /dev/null)\" == '' ]] || [[ \"$(docker images -q megabytelabs/dockerfile-project:slim 2> /dev/null)\" == '' ]]; then run-s build; fi && run-s update test build update test version",
+    "publish": "run-s publish:*",
+    "publish:login": "docker login",
+    "publish:prepare": "npx lint-staged && run-s prepare-release && git push --follow-tags origin master && run-s build && (if [ -f slim.report.json ]; then (git add slim.report.json && git commit -m 'chore(slim-report) Adding slim.report.json.' && git push origin master); fi)",
+    "publish:publish": "docker push megabytelabs/dockerfile-project:latest && docker push megabytelabs/dockerfile-project:${npm_package_version}",
+    "publish:publish-slim": "docker push megabytelabs/dockerfile-project:slim && docker push megabytelabs/dockerfile-project:${npm_package_version}-slim",
+    "publish:readme": "docker pushrm megabytelabs/dockerfile-project",
+    "publish:readme-description": "SHORT_DESCRIPTION=$(jq -r '.dockerhub_description' .blueprint.json) && PACKAGE_SLUG=$(jq -r '.slug_full' .blueprint.json) && docker pushrm --short \"${SHORT_DESCRIPTION}\" megabytelabs/${PACKAGE_SLUG}",
+    "scan": "run-s build scan:*",
+    "scan:_login": "docker scan --accept-license --login",
+    "scan:latest": "docker scan --file Dockerfile megabytelabs/dockerfile-project:latest",
+    "scan:slim": "docker scan --file Dockerfile megabytelabs/dockerfile-project:slim",
+    "shell": "docker run --cap-drop=ALL -it -v \"${PWD}:/work\" -w /work --entrypoint /bin/sh --rm megabytelabs/dockerfile-project:latest",
+    "shell:slim": "docker run --cap-drop=ALL -v \"${PWD}:/work\" -w /work -it --entrypoint /bin/sh --rm megabytelabs/dockerfile-project:slim",
+    "sizes": "docker images",
+    "start": "run-s update",
+    "test": "run-s test:*",
+    "test:docker": "docker run -v ${PWD}:/work -w /work hadolint/hadolint:latest hadolint Dockerfile",
+    "test:preprettier": "if [ -f slim.report.json ]; then prettier --write slim.report.json; fi && if [ -f .blueprint.json ]; then prettier --write .blueprint.json; fi",
+    "test:prettier": "prettier --list-different .",
+    "test:shellcheck": "find . -type d \\( -name .cache -o -name .git -o -name .modules  -o -name node_modules -o -name .husky -o -name slim_test \\) -prune -o -type f \\( -name \\*.sh -o -name \\*.sh.j2 \\) -print0 | xargs -0 -r -n1 shellcheck",
+    "test:unit": "TEST_BYPASS=$(jq -r '.bypass_unit_test' .blueprint.json) && if [ $TEST_BYPASS != 'true' ]; then bash ./slim_test/test.sh; fi",
+    "update": "bash .start.sh && cp ./.modules/dockerfile/.start.sh .start.sh",
+    "version": "standard-version -a --no-verify"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "devDependencies": {
+    "@megabytelabs/prettier-config": "^1.2.17",
+    "consola": "^2.15.3",
+    "cspell": "^5.3.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^5.1.1",
+    "lint-staged": "^11.0.0",
+    "markdown-link-check": "^3.8.7",
+    "npm-run-all": "^4.1.5",
+    "npm-scripts-info": "^0.3.9",
+    "prettier": "^2.1.1",
+    "prettier-package-json": "^2.1.3",
+    "prettier-plugin-sh": "^0.6.0",
+    "shellcheck": "^1.0.0",
+    "standard-version": "^9.0.0"
+  },
+  "keywords": [
+    "dockerfile-project",
+    "docker",
+    "dockerfile",
+    "alias",
+    "documentation",
+    "megabytelabs",
+    "professormanhattan"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "funding": [
+    {
+      "type": "opencollective",
+      "url": "https://opencollective.com/megabytelabs"
+    },
+    {
+      "type": "patreon",
+      "url": "https://www.patreon.com/ProfessorManhattan"
+    }
+  ],
+  "lint-staged": {
+    "**/*.{json,sh,yml}": [
+      "prettier --write"
+    ],
+    "package.json": [
+      "prettier-package-json --write"
+    ]
+  },
+  "prettier": "@megabytelabs/prettier-config",
+  "scripts-info": {
+    "build": "Build the regular Docker image and then build the slim image (if the project supports it)",
+    "build:latest": "Build the regular Docker image",
+    "build:slim": "Build a compact Docker image with DockerSlim",
+    "commit": "The preferred way of running git commit (instead of git commit, we prefer you run 'npm run commit' in the root of this repository)",
+    "fix": "Automatically fix formatting errors",
+    "info": "Logs descriptions of all the npm tasks",
+    "misc:markdown-links": "Checks markdown files for broken links",
+    "prepare-release": "Builds and updates the project and then updates the CHANGELOG with commits made using 'npm run commit'. Updates the project to be ready for release",
+    "publish": "Creates a new release and uploads the release to DockerHub",
+    "scan": "Scans images for vulnerabilities",
+    "shell": "Run the Docker container and open a shell",
+    "shell:slim": "Runs the Docker slim image container and open a shell",
+    "sizes": "List the sizes of the Docker images on the system",
+    "test": "Validates the Dockerfile, tests the Docker image, and performs project linting",
+    "update": "Runs .start.sh to automatically update meta files and documentation",
+    "version": "Used by 'npm run prepare-release' to update the CHANGELOG and app version"
+  },
+  "standard-version": {
+    "scripts": {
+      "prebump": "if grep -q \"CMD.\\[\\\"--version\\\"\\]\" Dockerfile; then VERSION=$(docker run --cap-drop=ALL -e PY_COLORS=0 --rm megabytelabs/dockerfile-project:latest | perl -pe 'if(($v)=/([0-9]+([.][0-9]+)+)/){print\"$v\";exit}$_=\"\"'); if [[ $VERSION == *.*.* ]]; then echo $VERSION; elif [[ $VERSION == *.* ]]; then echo $VERSION.0; fi; fi",
+      "prerelease": "git add --all",
+      "pretag": "PACKAGE_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && if git show-ref --tags v$PACKAGE_VERSION --quiet; then git tag -d v$PACKAGE_VERSION; fi"
+    }
+  }
+}
