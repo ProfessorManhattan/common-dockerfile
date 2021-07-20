@@ -4,7 +4,7 @@ version: '3'
 tasks:
   all:
     desc: Lint the project by running all the linters in parallel
-    deps: [formatting]
+    deps: [formatting, docker]
 
   formatting:
     deps:
@@ -26,6 +26,39 @@ tasks:
       - npm run lint:prettier
     sources:
       - '**/*.(css|html|js|json|less|md|mjml|php|scss|sh|ts|xml|yml)'
+
+  docker:
+    deps:
+      - :software:docker
+    desc: Lint Dockerfiles using Hadolint (requires Docker)
+    summary: |
+      $ Lint Dockerfiles using Hadolint
+
+      Hadolint is a linter for Dockerfiles. This task uses Hadolint to report warnings
+      and suggestions so that the project is using best practices and is less likely to
+      have errors. The task uses Docker to run an ultra-compact container that includes
+      Hadolint. Installing Hadolint is done at runtime. The task scans for all files that
+      are named either `Dockerfile` or `Dockerfile.j2`. On top of reporting suggestions
+      for adhereing to Docker best-practices, Hadolint also leverages Shellcheck to report
+      possible errors in the shell logic used by the Dockerfile.
+
+      If the Dockerfile is named something other than `Dockerfile` or `Dockerfile.j2`, you
+      can manually run Hadolint by running:
+      > docker run -v "$PWD:/work" -w /work megabytelabs/hadolint:slim CustomDockerfileName
+
+      This task will ignore files in the following directories:
+        * .cache        * .husky        * node_modules
+        * .common       * .modules      * test
+        * .git          * .task         * venv
+
+      For more information on Hadolint, see: https://github.com/hadolint/hadolint
+    cmds:
+      - find . -type d \( -name .cache -o -name .common -o -name .git -o -name .modules
+        -o -name node_modules -o -name .husky -o -name .task -o -name test -o -name venv \)
+        -prune -o -type f \( -name Dockerfile -o -name Dockerfile.j2 \) -print0 | xargs -0 -r -n1
+        docker run -v "$PWD:/work" -w /work megabytelabs/hadolint:slim
+    sources:
+      - '**/(Dockerfile|Dockerfile.j2)'
 
   scripts:
     deps:
