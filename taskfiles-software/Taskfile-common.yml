@@ -406,7 +406,7 @@ tasks:
           echo 'ARG VERSION' >> Dockerfile
           echo '' >> Dockerfile
           echo 'LABEL maintainer="Megabyte Labs <help@megabyte.space>"' >> Dockerfile
-          echo 'LABEL org.opencontainers.image.authors=""' >> Dockerfile
+          echo 'LABEL org.opencontainers.image.authors="Brian Zalewski &lt;brian@megabyte.space&gt;"' >> Dockerfile
           echo 'LABEL org.opencontainers.image.created=$BUILD_DATE' >> Dockerfile
           echo 'LABEL org.opencontainers.image.description="[[ Injected by running `task update` ]]"' >> Dockerfile
           echo 'LABEL org.opencontainers.image.documentation="[[ Injected by running `task update` ]]"' >> Dockerfile
