@@ -422,11 +422,15 @@ tasks:
       - |
         if [[ '{{OS}}' == 'darwin' ]]; then
           sed -i .bak "s^.*org.opencontainers.image.description.*^LABEL org.opencontainers.image.description=${DESCRIPTION}^g" Dockerfile && rm Dockerfile.bak
+          # yamllint disable-line rule:line-length
           sed -i .bak "s^.*org.opencontainers.image.documentation.*^LABEL org.opencontainers.image.documentation=\"{{.GROUP_URL}}/{{.REPOSITORY_SUBTYPE}}/${SLUG}/-/blob/master/README.md\"^g" Dockerfile && rm Dockerfile.bak
+          # yamllint disable-line rule:line-length
           sed -i .bak "s^.*org.opencontainers.image.source.*^LABEL org.opencontainers.image.source=\"{{.GROUP_URL}}/{{.REPOSITORY_SUBTYPE}}/${SLUG}.git\"^g" Dockerfile && rm Dockerfile.bak
         elif [[ '{{OS}}' == 'linux' ]]; then
           sed -i "s^.*org.opencontainers.image.description.*^LABEL org.opencontainers.image.description=${DESCRIPTION}^g" Dockerfile
+          # yamllint disable-line rule:line-length
           sed -i "s^.*org.opencontainers.image.documentation.*^LABEL org.opencontainers.image.documentation={{.GROUP_URL}}/{{.REPOSITORY_SUBTYPE}}/${SLUG}/-/blob/master/README.md\"^g" Dockerfile
+          # yamllint disable-line rule:line-length
           sed -i "s^.*org.opencontainers.image.source.\*^LABEL org.opencontainers.image.source={{.GROUP_URL}}/{{.REPOSITORY_SUBTYPE}}/${SLUG}.git\"^g" Dockerfile
         fi
     sources:
