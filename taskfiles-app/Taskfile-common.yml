@@ -121,7 +121,7 @@ tasks:
       - git reset --hard HEAD
       - git clean -fxd :/
       - git checkout master
-      - git pull origin master
+      - git pull origin master --no-rebase
       - bash .start.sh
 
   nodejs-dependencies:
@@ -349,7 +349,7 @@ tasks:
 
   update-project:
     cmds:
-      - git pull origin master
+      - git pull origin master --no-rebase
 
   update-start-sh:
     cmds:
