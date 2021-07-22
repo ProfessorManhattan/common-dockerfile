@@ -67,7 +67,7 @@
   "hbs": {
     "ansible": false,
     "docker": true,
-    "docker-app": true,
+    "docker_app": true,
     "dockerfile": true,
     "playbook": false,
     "python": false,

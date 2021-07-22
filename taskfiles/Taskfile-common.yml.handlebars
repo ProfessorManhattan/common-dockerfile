@@ -4,11 +4,6 @@ version: '3'
 tasks:
 {{#if hbs.role}}
   autopopulate-ansible-dependencies:
-    env:
-      COLLECTIONS:
-        sh: yq eval '.collections' requirements.yml
-      DEPENDENCIES:
-        sh: yq eval '.dependencies' meta/main.yml
     cmds:
       - task: autopopulate-ansible-collection
         vars:
@@ -37,23 +32,31 @@ tasks:
 
   autopopulate-ansible-collection:
     env:
-      REFS:
-        sh: grep -Ril "\{{.KEY}}" ./tasks
+      COLLECTIONS:
+        sh: yq eval '.collections' requirements.yml
+      REFERENCES:
+        sh: grep -Ril "\{{.KEY}}" ./tasks || true
     cmds:
-      - yq eval -i -P '.collections = .collections + \{{.VAL}}' requirements.yml
+      - |
+        if [[ ! "$COLLECTIONS" =~ "\{{.KEY}}" ]] && [ "$REFERENCES" ]; then
+          yq eval -i -P '.collections = .collections + \{{.VAL}}' requirements.yml
+        fi
     status:
-      - '[ ! "$REFS" ]'
-      - '[[ ! "$COLLECTIONS" =~ "\{{.KEY}}" ]]'
+      - '[[ "$COLLECTIONS" =~ "\{{.KEY}}" ]] || [ ! "$REFERENCES" ]'
 
   autopopulate-ansible-dependency:
     env:
-      REFS:
-        sh: grep -Ril "\{{.KEY}}" ./tasks
+      DEPENDENCIES:
+        sh: yq eval '.dependencies' meta/main.yml
+      REFERENCES:
+        sh: grep -Ril "\{{.KEY}}" ./tasks || true
     cmds:
-      - yq eval -i -P '.dependencies = .dependencies + \{{.VAL}}' meta/main.yml
+      - |
+        if [[ ! "$DEPENDENCIES" =~ "\{{.KEY}}" ]] && [ "$REFERENCES" ]; then
+          yq eval -i -P '.dependencies = .dependencies + \{{.VAL}}' meta/main.yml
+        fi
     status:
-      - '[ ! "$REFS" ]'
-      - '[[ ! "$DEPENDENCIES" =~ "\{{.KEY}}" ]]'
+      - '[[ "$DEPENDENCIES" =~ "\{{.KEY}}" ]] || [ ! "$REFERENCES" ]'
 
   autopopulate-ansible-requirements:
     env:
@@ -782,7 +785,7 @@ tasks:
       - :software:jq
       - :software:rsync
     env:
-{{#if hbs.ansible-molecule}}
+{{#if hbs.ansible_molecule}}
       FIRSTLINE:
         sh: head -n 1 Dockerfile
 {{/if}}
@@ -801,10 +804,12 @@ tasks:
     cmds:
       - task: _update-files
       - find .common/files-\{{.REPOSITORY_SUBTYPE}} -type f -name "*.handlebars" -delete
+{{#if hbs.ansible_molecule}}
       - |
-        if [[ '\{{.REPOSITORY_SUBTYPE}}' == 'ansible-molecule' ]] && ([[ "$FIRSTLINE" == *"debian"* ]] || [[ "$FIRSTLINE" == *"ubuntu"* ]]); then
+        if [[ "$FIRSTLINE" == *"debian"* ]] || [[ "$FIRSTLINE" == *"ubuntu"* ]]; then
           cp .common/initctl initctl
         fi
+{{/if}}
       - rsync -aPq ".common/files-\{{.REPOSITORY_SUBTYPE}}/" ./
       - chmod 755 .husky/pre-commit
       - task: update-sort

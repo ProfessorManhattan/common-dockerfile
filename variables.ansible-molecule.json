@@ -66,8 +66,8 @@
   "group": "none",
   "hbs": {
     "ansible": false,
+    "ansible_molecule": true,
     "docker": true,
-    "docker-ansible-molecule": true,
     "dockerfile": true,
     "playbook": false,
     "python": false,

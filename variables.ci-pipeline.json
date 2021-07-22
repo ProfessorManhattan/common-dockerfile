@@ -66,8 +66,8 @@
   "group": "none",
   "hbs": {
     "ansible": false,
+    "ci_pipeline": true,
     "docker": true,
-    "docker-ci-pipeline": true,
     "dockerfile": true,
     "playbook": false,
     "python": false,

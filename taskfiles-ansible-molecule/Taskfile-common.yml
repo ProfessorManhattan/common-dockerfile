@@ -493,6 +493,8 @@ tasks:
       - :software:jq
       - :software:rsync
     env:
+      FIRSTLINE:
+        sh: head -n 1 Dockerfile
       PKG_BLUEPRINT:
         sh: jq -r '.blueprint' package.json
       PKG_DEPS:
@@ -509,7 +511,7 @@ tasks:
       - task: _update-files
       - find .common/files-{{.REPOSITORY_SUBTYPE}} -type f -name "*.handlebars" -delete
       - |
-        if [[ '{{.REPOSITORY_SUBTYPE}}' == 'ansible-molecule' ]] && ([[ "$FIRSTLINE" == *"debian"* ]] || [[ "$FIRSTLINE" == *"ubuntu"* ]]); then
+        if [[ "$FIRSTLINE" == *"debian"* ]] || [[ "$FIRSTLINE" == *"ubuntu"* ]]; then
           cp .common/initctl initctl
         fi
       - rsync -aPq ".common/files-{{.REPOSITORY_SUBTYPE}}/" ./
