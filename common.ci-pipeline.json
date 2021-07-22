@@ -1,7 +1,7 @@
 {
   "github_prefix": "docker-",
   "hbs": {
-    "docker-ci-pipeline": true,
+    "ci_pipeline": true,
     "docker": true,
     "dockerfile": true
   },
