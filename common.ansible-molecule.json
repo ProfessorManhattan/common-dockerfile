@@ -1,7 +1,7 @@
 {
   "github_prefix": "docker-",
   "hbs": {
-    "docker-ansible-molecule": true,
+    "ansible_molecule": true,
     "docker": true,
     "dockerfile": true
   },

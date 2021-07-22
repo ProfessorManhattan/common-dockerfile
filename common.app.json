@@ -1,7 +1,7 @@
 {
   "github_prefix": "docker-",
   "hbs": {
-    "docker-app": true,
+    "docker_app": true,
     "docker": true,
     "dockerfile": true
   },
