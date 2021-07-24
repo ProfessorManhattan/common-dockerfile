@@ -7,7 +7,7 @@ tasks:
     deps:
       - formatting
       - docker
-      - shellcheck
+      - scripts
 
   formatting:
     deps:
