@@ -77,6 +77,7 @@
   "header_description_pre": "The source to an Ansible/Molecule Docker container. Maintained by ",
   "header_title_post": "",
   "header_title_pre": "Docker: ",
+  "json_top_keys": "",
   "license": "MIT",
   "link": {
     "chat": "https://app.slack.com/client/T01ABCG4NK1/C01NN74H0LW/details/",
