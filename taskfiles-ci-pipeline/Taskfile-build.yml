@@ -2,7 +2,7 @@
 version: '3'
 
 tasks:
-  all:
+  build:
     cmds:
       - task: normal
       - task: slim
@@ -28,12 +28,42 @@ tasks:
       VERSION:
         sh: jq -r '.version' package.json
     cmds:
-      - bash .common/log log "Building regular image named '{{.IMAGE_NAME}}'"
+      - t info "Building regular image named '{{.IMAGE_NAME}}'"
       - docker build --build-arg BUILD_DATE="{{.BUILD_DATE}}" --build-arg REVISION="{{.REVISION}}" --build-arg VERSION="{{.VERSION}}"
         --tag {{.IMAGE_NAME}}:latest --tag {{.IMAGE_NAME}}:{{.VERSION}} .
     sources:
       - Dockerfile
       - package.json
+
+  slim-finish:
+    deps: [slim-prettier, slim-sizes]
+
+  slim-prettier:
+    cmds:
+      - prettier --write slim.report.json
+    sources:
+      - slim.report.json
+
+  slim-sizes:
+    vars:
+      PREVIOUS_SLIM_SIZE:
+        sh: jq -r '.blueprint.slim_size' package.json
+      REGULAR_SIZE:
+        sh: docker manifest inspect -v "{{.IMAGE_NAME}}:latest" | grep size | awk -F ":" "{sum+=$NF} END {print sum}"
+          | awk "{$1=$1/(1024^2); print $1,'MB';}"
+      SLIM_SIZE:
+        sh: docker manifest inspect -v "{{.IMAGE_NAME}}:slim" | grep size | awk -F ":" "{sum+=$NF} END {print sum}"
+          | awk "{$1=$1/(1024^2); print $1,'MB';}"
+    env:
+      TMP:
+        sh: mktemp
+    cmds:
+      - t info "The slim build was compressed to '{{.SLIM_SIZE}}' ('{{.REGULAR_SIZE}}' originally)."
+      - jq --arg a "{{.SLIM_SIZE}}" '.blueprint.slim_size = $a' package.json > "$TMP"
+      - mv "$TMP" package.json
+      - task: :common:update
+    status:
+      - '[[ "{{.PREVIOUS_SLIM_SIZE}}" == "{{.SLIM_SIZE}}" ]]'
 
   slim:
     deps:
@@ -59,10 +89,10 @@ tasks:
     cmds:
       - |
         if ! docker image inspect megabytelabs/updater:latest > /dev/null 2>&1; then
-          bash .common/log log "Building regular image first"
+          t info "Building regular image first"
           task build:normal
         fi
-      - bash .common/log log "Building slim image named '{{.IMAGE_NAME}}'"
+      - t info "Building slim image named '{{.IMAGE_NAME}}'"
       - docker-slim build --tag {{.IMAGE_NAME}}:slim {{.SLIM_COMMAND}} {{.IMAGE_NAME}}:latest
       - prettier --write slim.report.json
       - task: slim-sizes
@@ -72,33 +102,3 @@ tasks:
     preconditions:
       - sh: docker image inspect megabytelabs/updater:latest > /dev/null 2>&1
         msg: 'You need to build a normal Docker container before converting it into a slim build. Try running `task build:normal` before this task.'
-
-  _slim:
-    deps: [slim-prettier, slim-sizes]
-
-  slim-prettier:
-    cmds:
-      - prettier --write slim.report.json
-    sources:
-      - slim.report.json
-
-  slim-sizes:
-    vars:
-      PREVIOUS_SLIM_SIZE:
-        sh: jq -r '.blueprint.slim_size' package.json
-      REGULAR_SIZE:
-        sh: docker manifest inspect -v "{{.IMAGE_NAME}}:latest" | grep size | awk -F ":" "{sum+=$NF} END {print sum}"
-          | awk "{$1=$1/(1024^2); print $1,'MB';}"
-      SLIM_SIZE:
-        sh: docker manifest inspect -v "{{.IMAGE_NAME}}:slim" | grep size | awk -F ":" "{sum+=$NF} END {print sum}"
-          | awk "{$1=$1/(1024^2); print $1,'MB';}"
-    env:
-      TMP:
-        sh: mktemp
-    cmds:
-      - bash .common/log info "The slim build was compressed to '{{.SLIM_SIZE}}' ('{{.REGULAR_SIZE}}' originally)."
-      - jq --arg a "{{.SLIM_SIZE}}" '.blueprint.slim_size = $a' package.json > "$TMP"
-      - mv "$TMP" package.json
-      - task: :common:update
-    status:
-      - '[[ "{{.PREVIOUS_SLIM_SIZE}}" == "{{.SLIM_SIZE}}" ]]'
