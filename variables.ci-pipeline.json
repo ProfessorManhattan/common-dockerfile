@@ -161,6 +161,7 @@
       "wrangler": "https://gitlab.com/megabyte-labs/wrangler"
     }
   },
+  "sharp_instructions": [],
   "subgroup": "ci-pipeline",
   "title": "[[ package.json .blueprint.title - See CONTRIBUTING.md ]]"
 }
