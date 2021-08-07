@@ -4,6 +4,7 @@ stages:
   - fix
   - lint
   - test
+  - security
   - publish
 
 include:
