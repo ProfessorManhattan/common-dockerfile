@@ -1,11 +1,1 @@
-{
-  "github_prefix": "docker-",
-  "hbs": {
-    "docker_app": true,
-    "docker": true,
-    "dockerfile": true
-  },
-  "header_description_pre": "A Dockerfile project for an app managed by ",
-  "header_title_pre": "Docker: ",
-  "subgroup": "app"
-}
+{}
