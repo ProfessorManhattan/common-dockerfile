@@ -47,5 +47,6 @@
       "The subgroup is found by looking at the second to last part of the URL of the repository (e.g. for Ansible Lint the subgroup would be `ci-pipeline`)."
     ]
   ],
-  "github_prefix": "docker-"
+  "github_prefix": "docker-",
+  "group": "dockerfile"
 }
