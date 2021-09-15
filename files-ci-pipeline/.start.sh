@@ -12,7 +12,7 @@
 
 set -eo pipefail
 
-export REPO_TYPE="none"
+export REPO_TYPE="dockerfile"
 export REPO_SUBTYPE="ci-pipeline"
 
 # @description Ensures ~/.local/bin is in the PATH variable

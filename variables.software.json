@@ -69,7 +69,7 @@
     "help": "help@megabyte.space"
   },
   "github_prefix": "docker-",
-  "group": "none",
+  "group": "dockerfile",
   "hbs": {
     "docker": true,
     "docker_software": true,
