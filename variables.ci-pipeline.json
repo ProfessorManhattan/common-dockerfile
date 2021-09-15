@@ -71,12 +71,12 @@
   "github_prefix": "docker-",
   "group": "none",
   "hbs": {
-    "ansible": false,
-    "dockerfile": false,
-    "playbook": false,
-    "python": false,
-    "yaml": false
+    "ci_pipeline": true,
+    "docker": true,
+    "dockerfile": true
   },
+  "header_description_pre": "A CI pipeline tool Docker container project maintained by ",
+  "header_title_pre": "Docker: ",
   "json_top_keys": "",
   "license": "MIT",
   "link": {
@@ -125,7 +125,6 @@
     "twitter": "MegabyteLabs",
     "vagrant": "https://app.vagrantup.com"
   },
-  "repo": "[[ package.json .blueprint.repo - See CONTRIBUTING.md ]]",
   "repository": {
     "github": "",
     "gitlab": "",
