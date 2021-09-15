@@ -1,1 +1,9 @@
-{}
+{
+  "standard-version": {
+    "scripts": {
+      "prebump": "task docker:standard-version:prebump",
+      "prerelease": "task docker:standard-version:prelease",
+      "pretag": "task docker:standard-version:pretag"
+    }
+  }
+}
