@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # @file .start.sh
 # @brief Ensures the project is up-to-date with the latest upstream changes
@@ -12,8 +12,8 @@
 
 set -eo pipefail
 
-export REPO_TYPE=""
-export REPO_SUBTYPE=""
+export REPO_TYPE="common"
+export REPO_SUBTYPE="dockerfile"
 
 # @description Ensures ~/.local/bin is in the PATH variable
 function ensureLocalPath() {

@@ -3,9 +3,9 @@
 {{ load:.modules/docs/readme/quick-description.md }}
 {{ load:.modules/docs/readme/slim-disclaimer.md }}
 {{ template:toc }}
-{{ load:.modules/docs/readme-ci/overview.md }}
+{{ load:.modules/docs/readme-ci-pipeline/overview.md }}
 {{ load:.modules/docs/readme/requirements.md }}
-{{ load:.modules/docs/readme-ci/example.md }}
+{{ load:.modules/docs/readme-ci-pipeline/example.md }}
 {{ load:.modules/docs/readme/building.md }}
 {{ load:.modules/docs/readme/fat-build-only.md }}
 {{ load:.modules/docs/readme/build-tools.md }}
