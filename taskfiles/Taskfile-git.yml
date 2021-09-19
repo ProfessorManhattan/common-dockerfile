@@ -3,11 +3,8 @@ version: '3'
 
 vars:
   GITHUB_ISSUES: true
-  GITHUB_ORG: ProfessorManhattan
-  GITHUB_USER: ProfessorManhattan
   GITHUB_WIKI: false
   GITLAB_WIKI: false
-  TIMEZONE: America/New_York
 
 env:
   CLICOLOR:
@@ -304,7 +301,6 @@ tasks:
 
   gitlab:wiki:
     deps:
-      - :common:update:update
       - :install:software:glab
       - :install:software:jq
       - gitlab:create
@@ -314,7 +310,7 @@ tasks:
     cmds:
       - |
         if [ ! -z "$GITLAB_TOKEN" ]; then
-          glab api projects/:fullpath/services/external-wiki -X PUT -f external_wiki_url="{{.DOCS_URL}}"
+          glab api projects/:fullpath/services/external-wiki -X PUT -f external_wiki_url="{{.DOCS_URL}}" --silent
         else
           true warn 'The `GITLAB_TOKEN` environment variable is not set so the GitLab repository external wiki cannot be updated via the API.'
         fi
