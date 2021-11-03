@@ -1,12 +1,6 @@
 ---
 version: '3'
 
-output: interleaved
-
-vars:
-  REPOSITORY_SUBTYPE: ci-pipeline
-  REPOSITORY_TYPE: dockerfile
-
 includes:
   common: ./.common/taskfiles/common/Taskfile.yml
   common:update: ./.common/taskfiles/common/Taskfile-update.yml
@@ -19,6 +13,12 @@ includes:
   npm: ./.common/taskfiles/Taskfile-npm.yml
   security: ./.common/taskfiles/Taskfile-security.yml
   vscode: ./.common/taskfiles/Taskfile-vscode.yml
+
+output: interleaved
+
+vars:
+  REPOSITORY_SUBTYPE: ci-pipeline
+  REPOSITORY_TYPE: dockerfile
 
 tasks:
   donothing: 'true'

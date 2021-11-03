@@ -1,29 +1,8 @@
 {
-  "name": "@{{profile.npmjs_organization}}/{{repository.prefix.github}}{{slug}}",
-  "version": "0.0.1",
-  "description": "{{description}}",
-  "license": "{{license}}",
   "author": "{{author.name}} <{{author.email}}> ({{link.home}})",
-  "homepage": "{{link.home}}",
-  "repository": {
-    "type": "git",
-    "url": "git+{{repository.github}}.git"
-  },
   "bugs": {
     "email": "{{email.help}}",
     "url": "{{repository.gitlab}}{{repository.location.issues.gitlab}}"
-  },
-  "type": "module",
-  "scripts": {
-    "clean": "task common:clean",
-    "commit": "task common:commit",
-    "info": "task --list",
-    "prepare": "task common:husky",
-    "prepare-release": "task common:prepare-release",
-    "requirements": "task common:requirements",
-    "reset": "task common:reset",
-    "reset-force": "task common:reset-force",
-    "update": "task common:update"
   },
   "config": {
     "commitizen": {
@@ -31,6 +10,7 @@
     }
   },
   "dependencies": {},
+  "description": "{{description}}",
   "devDependencies": {
     "@commitlint/config-conventional": "^13.1.0",
     "@megabytelabs/prettier-config": "^14.14.14",
@@ -45,10 +25,6 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-yml": "0.10.1"
   },
-  "keywords": [
-    "megabytelabs",
-    "professormanhattan"
-  ],
   "engines": {
     "node": ">=10"
   },
@@ -62,6 +38,12 @@
       "url": "{{profile_link.patreon}}/{{profile.patreon}}"
     }
   ],
+  "homepage": "{{link.home}}",
+  "keywords": [
+    "megabytelabs",
+    "professormanhattan"
+  ],
+  "license": "{{license}}",
   "lint-staged": {
     "**/*": [
       "blocklint --wordlist blacklist,slave,whitelist",
@@ -73,12 +55,15 @@
     "**/*.(css|html|less|md|mjml|php|scss|sh|xml)": [
       "task fix:prettier --"
     ],
-    "**/*.json": [
-      "task fix:json --"
+    "**/*.(jpg|png)": [
+      "task image:compress --"
     ],
     "**/*.(js|jsx|ts)": [
       "task fix:js --",
       "task lint:js --"
+    ],
+    "**/*.json": [
+      "task fix:json --"
     ],
     "**/*.sh": [
       "task fix:shell --",
@@ -95,9 +80,6 @@
       "task fix:yaml --",
       "task lint:yaml --"
     ],
-    "**/*.(jpg|png)": [
-      "task image:compress --"
-    ],
     "logo.png": [
       "task image:resize -- 200 200",
       "task image:compress --"
@@ -106,12 +88,30 @@
       "requirements-txt-fixer"
     ]
   },
+  "name": "@{{profile.npmjs_organization}}/{{repository.prefix.github}}{{slug}}",
   "prettier": "@megabytelabs/prettier-config",
+  "repository": {
+    "type": "git",
+    "url": "git+{{repository.github}}.git"
+  },
+  "scripts": {
+    "clean": "task common:clean",
+    "commit": "task common:commit",
+    "info": "task --list",
+    "prepare": "task common:husky",
+    "prepare-release": "task common:prepare-release",
+    "requirements": "task common:requirements",
+    "reset": "task common:reset",
+    "reset-force": "task common:reset-force",
+    "update": "task common:update"
+  },
   "standard-version": {
     "scripts": {
-      "prerelease": "task docker:standard-version:prelease",
       "prebump": "task docker:standard-version:prebump",
+      "prerelease": "task docker:standard-version:prelease",
       "pretag": "task docker:standard-version:pretag"
     }
-  }
+  },
+  "type": "module",
+  "version": "0.0.1"
 }
