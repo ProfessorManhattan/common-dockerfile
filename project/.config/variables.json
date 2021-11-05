@@ -1,0 +1,8 @@
+{
+  "group": "dockerfile",
+  "repository": {
+    "prefix": {
+      "github": "docker-"
+    }
+  }
+}

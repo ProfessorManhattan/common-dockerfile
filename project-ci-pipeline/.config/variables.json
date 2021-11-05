@@ -1,0 +1,24 @@
+{
+  "docs": {
+    "header_description_pre": "A CI pipeline container maintained by ",
+    "header_title_pre": "<i></i>",
+    "link": "https://megabyte.space/docs/docker/ci"
+  },
+  "gitlab_pipelines": [
+    {
+      "active": true,
+      "cron": "0 12 * * 1",
+      "description": "Weekly build of latest version",
+      "ref": "master",
+      "variable": {
+        "WEEKLY_BUILD": true
+      }
+    }
+  ],
+  "repository": {
+    "prefix": {
+      "github": "docker-ci-"
+    }
+  },
+  "subgroup": "ci-pipeline"
+}

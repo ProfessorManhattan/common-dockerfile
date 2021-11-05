@@ -1,0 +1,8 @@
+{
+  "docs": {
+    "header_description_pre": "A container for Ansible development maintained by ",
+    "header_title_pre": "<i></i>",
+    "link": "https://megabyte.space/docs/docker/molecule"
+  },
+  "subgroup": "ansible-molecule"
+}
