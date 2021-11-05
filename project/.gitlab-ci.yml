@@ -2,6 +2,7 @@
 stages:
   - update
   - lint
+  - test
   - publish
 
 include:
@@ -10,6 +11,7 @@ include:
   - local: .gitlab/ci/lint/prettier.gitlab-ci.yml
   - local: .gitlab/ci/lint/shellcheck.gitlab-ci.yml
   - local: .gitlab/ci/lint/yamllint.gitlab-ci.yml
-  - local: .gitlab/ci/publish/dockerhub.gitlab-ci.yml
-  - local: .gitlab/ci/publish/gitlab-registry.gitlab-ci.yml
+  - local: .gitlab/ci/publish/docker/dockerhub.gitlab-ci.yml
+  - local: .gitlab/ci/publish/docker/gitlab-registry.gitlab-ci.yml
+  - local: .gitlab/ci/test/docker/slim.gitlab-ci.yml
   - local: .gitlab/ci/update/project.gitlab-ci.yml
