@@ -31,8 +31,8 @@
   "keywords": [
     "megabytelabs",
     "professormanhattan",
-    "npm",
-    "package"
+    "dockerfile",
+    "docker"
   ],
   "dependencies": {
     "esbuild": "^0.12.29",
@@ -49,17 +49,17 @@
     "handlebars-helpers": "^0.10.0"
   },
   "blueprint": {
-    "description": "Includes common files used across different types of common file repositories (e.g. Go, Python, etc.)",
+    "description": "Common files used in Dockerfile projects including global common files, documentation partials, and shared configurations",
     "group": "common",
-    "overview": "This repository feeds downstream repositories that store programming language specific common files. When this repository is updated, the changes are propagated downstream via CI. This repository contains files that are meant to be global. For instance, if Go projects and Angular projects share a common file (say `.editorconfig`, for example) then that file is stored in this repository and propagated to the Go and Angular common file repositories. Then, for example, the Go common file repository is included in all of the Go projects as a submodule. This is meant to be done with every repository in an eco-system so that meta files, documentation, etc. are all kept in sync.",
-    "name": "Shared",
+    "overview": "This repository contains files that propagate down to Dockerfile project repositories via CI. By doing this, dependencies and configuration files are kept in sync across many repositories. Individual Dockerfile projects inherit their upstream files by copying over the `.common` folder files and then the `.common-{{ PROJECT_TYPE }}` folder. After the individual projects do that, they merge the appropriate JSON into a `.variables.json` file and use that as the context to generate any files that match `*.hbs.*` or `*.handlebars`.",
+    "name": "Common Dockerfile Project Files",
     "repository": {
-      "github": "https://github.com/ProfessorManhattan/shared-common-files",
-      "gitlab": "https://gitlab.com/megabyte-labs/common/shared"
+      "github": "https://github.com/ProfessorManhattan/common-dockerfile",
+      "gitlab": "https://gitlab.com/megabyte-labs/common/dockerfile"
     },
-    "slug": "shared-common-files",
+    "slug": "common-dockerfile",
     "subgroup": "dockerfile",
-    "title": "Shared Common Files"
+    "title": "Upstream Common Dockerfile Project Files"
   },
   "config": {
     "commitizen": {
@@ -67,7 +67,11 @@
     }
   },
   "eslintConfig": {
-    "extends": "@megabytelabs/eslint-config"
+    "extends": "@megabytelabs/eslint-config",
+    "rules": {
+      "import/no-extraneous-dependencies": "off",
+      "import/no-unresolved": "off"
+    }
   },
   "funding": [
     {
