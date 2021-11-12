@@ -1,21 +1,21 @@
 {
-  "name": "@megabytelabs/shared-common-files",
+  "name": "@megabytelabs/common-dockerfile",
   "version": "0.0.1",
   "private": false,
   "publishConfig": {
     "access": "public"
   },
-  "description": "Includes common files used across different types of common file repositories (e.g. Go, Python, etc.)",
+  "description": "Common files used in Dockerfile projects including global common files, documentation partials, and shared configurations",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ProfessorManhattan/shared-common-files.git"
+    "url": "git+https://github.com/ProfessorManhattan/common-dockerfile.git"
   },
   "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
   "homepage": "https://megabyte.space",
   "bugs": {
     "email": "help@megabyte.space",
-    "url": "https://gitlab.com/megabyte-labs/common/shared/-/issues"
+    "url": "https://gitlab.com/megabyte-labs/common/dockerfile/-/issues"
   },
   "type": "module",
   "engines": {
@@ -31,8 +31,8 @@
   "keywords": [
     "megabytelabs",
     "professormanhattan",
-    "dockerfile",
-    "docker"
+    "npm",
+    "package"
   ],
   "dependencies": {
     "esbuild": "^0.12.29",
