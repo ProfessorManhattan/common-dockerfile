@@ -35,11 +35,11 @@ includes:
   security: ./.config/taskfiles/Taskfile-security.yml
   symlink: ./.config/taskfiles/Taskfile-symlink.yml
   upstream: ./.config/taskfiles/upstream/Taskfile.yml
+
   upstream:common: ./.config/taskfiles/upstream/Taskfile-common.yml
   upstream:docs: ./.config/taskfiles/upstream/Taskfile-docs.yml
   upstream:project: ./.config/taskfiles/upstream/Taskfile-project.yml
   vscode: ./.config/taskfiles/Taskfile-vscode.yml
-
 output: interleaved
 
 vars:

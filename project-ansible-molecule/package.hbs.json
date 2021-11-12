@@ -1,7 +1,3 @@
 {
-  "keywords": [
-    "ansible",
-    "molecule",
-    "testing"
-  ]
+  "keywords": ["ansible", "molecule", "testing"]
 }

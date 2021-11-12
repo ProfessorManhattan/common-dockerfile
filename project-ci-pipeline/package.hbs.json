@@ -1,26 +1,13 @@
 {
-  "files": [
-    "bin",
-    "dist",
-    "CHANGELOG.md",
-    "LICENSE",
-    "README.md"
-  ],
+  "files": ["bin", "dist", "CHANGELOG.md", "LICENSE", "README.md"],
+  "keywords": ["ci", "pipeline", "gitlab", "github", "github-actions", "gitlab-ci"],
   "main": "dist/main.js",
-  "keywords": [
-    "ci",
-    "pipeline",
-    "gitlab",
-    "github",
-    "github-actions",
-    "gitlab-ci"
-  ],
-  "typings": "dist/main.d.ts",
   "standard-version": {
     "scripts": {
       "prebump": "task docker:standard-version:prebump",
       "prerelease": "task docker:standard-version:prelease",
       "pretag": "task docker:standard-version:pretag"
     }
-  }
+  },
+  "typings": "dist/main.d.ts"
 }

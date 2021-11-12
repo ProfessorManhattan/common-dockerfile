@@ -1,8 +1,3 @@
 {
-  "keywords": [
-    "docker",
-    "dockerfile",
-    "container",
-    "virtualization"
-  ]
+  "keywords": ["docker", "dockerfile", "container", "virtualization"]
 }
