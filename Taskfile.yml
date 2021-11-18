@@ -6,6 +6,7 @@ includes:
   ansible:ansibler: ./.config/taskfiles/ansible/Taskfile-ansibler.yml
   ansible:test: ./.config/taskfiles/ansible/Taskfile-test.yml
   boilr: ./.config/taskfiles/Taskfile-boilr.yml
+  ci: ./.config/taskfiles/Taskfile-ci.yml
   common: ./.config/taskfiles/common/Taskfile.yml
   common:code: ./.config/taskfiles/common/Taskfile-code.yml
   common:update: ./.config/taskfiles/common/Taskfile-update.yml
@@ -13,7 +14,10 @@ includes:
   fix: ./.config/taskfiles/Taskfile-fix.yml
   git: ./.config/taskfiles/Taskfile-git.yml
   image: ./.config/taskfiles/Taskfile-image.yml
-  install: ./.config/taskfiles/Taskfile-install.yml
+  install: ./.config/taskfiles/install/Taskfile.yml
+  install:npm: ./.config/taskfiles/install/Taskfile-npm.yml
+  install:python: ./.config/taskfiles/install/Taskfile-python.yml
+  install:software: ./.config/taskfiles/install/Taskfile-software.yml
   lint: ./.config/taskfiles/lint/Taskfile.yml
   lint:esprint: ./.config/taskfiles/lint/Taskfile-esprint.yml
   lint:markdown: ./.config/taskfiles/lint/Taskfile-markdown.yml
@@ -35,17 +39,25 @@ includes:
   security: ./.config/taskfiles/Taskfile-security.yml
   symlink: ./.config/taskfiles/Taskfile-symlink.yml
   upstream: ./.config/taskfiles/upstream/Taskfile.yml
-
   upstream:common: ./.config/taskfiles/upstream/Taskfile-common.yml
+  upstream:commondocs: ./.config/taskfiles/upstream/Taskfile-commondocs.yml
   upstream:docs: ./.config/taskfiles/upstream/Taskfile-docs.yml
   upstream:project: ./.config/taskfiles/upstream/Taskfile-project.yml
+  upstream:shared: ./.config/taskfiles/upstream/Taskfile-shared.yml
   vscode: ./.config/taskfiles/Taskfile-vscode.yml
+
 output: interleaved
 
 vars:
   GITHUB_ORG: ProfessorManhattan
   GITHUB_USER: ProfessorManhattan
+  IGNORE_FOLDERS: -path './.autodoc/*' -o -path './.cache/*' -o -path './.common*' -o -path './.config/*' -o -path './.git/*'
+    -o -path './.github/*' -o -path './.gitlab/*' -o -path './.husky/*' -o -path './.modules/*' -o -path './.npm/*'
+    -o -path './.pnpm-store/*' -o -path './.shared/*' -o -path './.task/*' -o -path './.venv/*' -o -path './.vscode/*'
+    -o -path './build/*' -o -path './dist/*' -o -path './node_modules/*' -o -path './venv/*' -o -name pnpm-lock.yaml
+    -o -name package-lock.json -o -name poetry.lock -o -name '.variables.json'
   NPM_PROGRAM: npm
+  NPX_HANDLE: ''
   NPX_PACKAGE: npx
   REPOSITORY_SUBTYPE: dockerfile
   REPOSITORY_TYPE: common
