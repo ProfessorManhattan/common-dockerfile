@@ -37,15 +37,15 @@
     "handlebars-helpers": "^0.10.0"
   },
   "keywords": [
+    "common",
+    "docker",
+    "dockerfile",
+    "files",
     "megabytelabs",
     "npm",
     "package",
     "professormanhattan",
-    "common",
-    "files",
-    "shared",
-    "docker",
-    "dockerfile"
+    "shared"
   ],
   "engines": {
     "node": ">=14.18.0"
