@@ -59,7 +59,7 @@
     },
     "slug": "common-dockerfile",
     "subgroup": "dockerfile",
-    "title": "Upstream Common Dockerfile Project Files"
+    "title": "Common Dockerfile Project Files"
   },
   "config": {
     "commitizen": {
@@ -67,11 +67,7 @@
     }
   },
   "eslintConfig": {
-    "extends": "@megabytelabs/eslint-config",
-    "rules": {
-      "import/no-extraneous-dependencies": "off",
-      "import/no-unresolved": "off"
-    }
+    "extends": "@megabytelabs/eslint-config"
   },
   "funding": [
     {
@@ -97,20 +93,12 @@
     "**/*.(jpg|png)": [
       "task image:compress --"
     ],
-    "**/*.(js|jsx|ts)": [
-      "task fix:js --",
-      "task lint:js --"
-    ],
     "**/*.(js|jsx|ts|tsx)": [
       "task fix:js --",
       "task lint:js --"
     ],
     "**/*.json": [
       "task fix:json --"
-    ],
-    "**/*.py": [
-      "black",
-      "flake8"
     ],
     "**/*.sh": [
       "task fix:shell --",
@@ -127,15 +115,9 @@
       "task fix:yaml --",
       "task lint:yaml --"
     ],
-    "**/*vault.yml": [
-      "task ansible:vault:lint:file --"
-    ],
     "logo.png": [
       "task image:resize -- 200 200",
       "task image:compress --"
-    ],
-    "requirements.txt": [
-      "requirements-txt-fixer"
     ]
   },
   "prettier": "@megabytelabs/prettier-config",
