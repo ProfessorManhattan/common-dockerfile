@@ -1,5 +1,5 @@
 {
-  "name": "@megabytelabs/common-dockerfile",
+  "name": "@mblabs/common-dockerfile",
   "version": "0.0.1",
   "private": false,
   "publishConfig": {
@@ -41,9 +41,8 @@
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^13.1.0",
-    "@megabytelabs/eslint-config": "^1.0.0",
-    "@megabytelabs/jest-preset": "^1.0.0",
-    "@megabytelabs/prettier-config": "^14.14.14",
+    "@mblabs/eslint-config": "^1.0.95",
+    "@mblabs/prettier-config": "^14.14.30",
     "@typescript-eslint/eslint-plugin": "^5.2.0",
     "cz-conventional-changelog": "^3.3.0",
     "handlebars-helpers": "^0.10.0"
@@ -67,7 +66,7 @@
     }
   },
   "eslintConfig": {
-    "extends": "@megabytelabs/eslint-config"
+    "extends": "@mblabs/eslint-config"
   },
   "funding": [
     {
@@ -120,7 +119,7 @@
       "task image:compress --"
     ]
   },
-  "prettier": "@megabytelabs/prettier-config",
+  "prettier": "@mblabs/prettier-config",
   "standard-version": {
     "scripts": {
       "prerelease": "git add --all"
