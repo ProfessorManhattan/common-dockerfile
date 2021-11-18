@@ -47,6 +47,9 @@
       "The subgroup is found by looking at the second to last part of the URL of the repository (e.g. for Ansible Lint the subgroup would be `ci-pipeline`)."
     ]
   ],
+  "docs": {
+    "link": "https://megabyte.space/docs/common/dockerfile"
+  },
   "github_prefix": "docker-",
   "group": "dockerfile"
 }

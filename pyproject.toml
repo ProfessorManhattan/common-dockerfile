@@ -6,14 +6,14 @@ authors = ["Brian Zalewski <brian@megabyte.space>"]
 license = "MIT"
 readme = "README.md"
 homepage = "https://megabyte.space"
-documentation = ""
-keywords = ["node", "python", "app"]
+documentation = "https://megabyte.space/docs/common/dockerfile"
+keywords = ["megabytelabs", "npm", "package", "professormanhattan"]
 include = ["CHANGELOG.md", "LICENSE"]
 
 [tool.poetry.dependencies]
+python = ">=3.7.0,<4.0.0"
 
 [tool.poetry.dev-dependencies]
-python = "^3.9"
 blocklint = "^0.2.3"
 pre-commit-hooks = "^4.0.1"
 proselint = "^0.12.0"

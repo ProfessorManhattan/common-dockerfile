@@ -2,8 +2,9 @@
 eslint:
   stage: lint
   image:
-    name: megabytelabs/eslint:slim
+    name: megabytelabs/yamllint:slim
     entrypoint: ['']
+  allow_failure: true
   variables:
     GIT_DEPTH: 1
   script:
