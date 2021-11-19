@@ -70,7 +70,7 @@
     "help": "help@megabyte.space"
   },
   "github_prefix": "docker-",
-  "group": "dockerfile",
+  "group": "common",
   "json_top_keys": "",
   "license": "MIT",
   "link": {
