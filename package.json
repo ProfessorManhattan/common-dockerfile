@@ -1,5 +1,5 @@
 {
-  "private": "false",
+  "private": true,
   "name": "@mblabs/common-dockerfile",
   "version": "0.0.1",
   "description": "Common files used in Dockerfile projects including global common files, documentation partials, and shared configurations",
