@@ -88,18 +88,18 @@
   "main": "dist/main.js",
   "name": "{{#if customPackageName}}{{customPackageName}}{{else}}@{{profile.npmjs_organization}}/{{repository.prefix.github}}{{slug}}{{/if}}",
   "prettier": "@mblabs/prettier-config",
-  "private": false,
+  "private": "{{npm_private}}",
   "publishConfig": {
-    "access": "public"
+    "access": "{{npm_publish_config_access}}"
   },
   "repository": {
     "type": "git",
     "url": "git+{{#if repository.github}}{{repository.github}}{{else}}https://github.com/{{profile.github}}/{{repository.prefix.github}}{{slug}}{{/if}}.git"
   },
   "scripts": {
-    "help": "task --list",
-    "prepare": "task common:husky",
-    "start": "bash .config/start.sh"
+    "help": "{{npm_scripts_help}}",
+    "prepare": "{{npm_scripts_prepare}}",
+    "start": "{{npm_scripts_start}}"
   },
   "standard-version": {
     "scripts": {
@@ -108,7 +108,7 @@
       "pretag": "task docker:standard-version:pretag"
     }
   },
-  "type": "module",
+  "type": "{{npm_type}}",
   "typings": "dist/main.d.ts",
-  "version": "0.0.1"
+  "version": "{{version}}"
 }
