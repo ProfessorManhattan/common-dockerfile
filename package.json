@@ -1,67 +1,5 @@
 {
-  "private": true,
-  "name": "@mblabs/common-dockerfile",
-  "version": "0.0.1",
-  "description": "Common files used in Dockerfile projects including global common files, documentation partials, and shared configurations",
-  "license": "MIT",
   "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
-  "homepage": "https://megabyte.space",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ProfessorManhattan/common-dockerfile.git"
-  },
-  "bugs": {
-    "email": "help@megabyte.space",
-    "url": "https://gitlab.com/megabyte-labs/common/dockerfile/-/issues"
-  },
-  "type": "module",
-  "scripts": {
-    "help": "task --list",
-    "prepare": "task common:husky",
-    "start": "bash .config/start.sh"
-  },
-  "config": {
-    "commitizen": {
-      "path": "cz-conventional-changelog"
-    }
-  },
-  "dependencies": {
-    "tslib": "^2.3.1"
-  },
-  "optionalDependencies": {
-    "chalk": "^4.1.2",
-    "inquirer": "^8.2.0",
-    "signale": "^1.4.0",
-    "string-break": "^1.2.0"
-  },
-  "devDependencies": {
-    "@commitlint/config-conventional": "^13.1.0",
-    "@mblabs/eslint-config": "^1.0.97",
-    "@mblabs/prettier-config": "^14.14.14",
-    "@mblabs/release-config": "^1.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.2.0",
-    "cz-conventional-changelog": "^3.3.0",
-    "handlebars-helpers": "^0.10.0",
-    "semantic-release": "^18.0.0"
-  },
-  "keywords": [
-    "common",
-    "docker",
-    "dockerfile",
-    "files",
-    "mblabs",
-    "megabytelabs",
-    "npm",
-    "package",
-    "professormanhattan",
-    "shared"
-  ],
-  "engines": {
-    "node": ">=14.18.0"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
   "blueprint": {
     "description": "Common files used in Dockerfile projects including global common files, documentation partials, and shared configurations",
     "group": "common",
@@ -74,6 +12,32 @@
     "slug": "common-dockerfile",
     "subgroup": "dockerfile",
     "title": "Common Dockerfile Project Files"
+  },
+  "bugs": {
+    "email": "help@megabyte.space",
+    "url": "https://gitlab.com/megabyte-labs/common/dockerfile/-/issues"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "dependencies": {
+    "tslib": "^2.3.1"
+  },
+  "description": "Common files used in Dockerfile projects including global common files, documentation partials, and shared configurations",
+  "devDependencies": {
+    "@commitlint/config-conventional": "^13.1.0",
+    "@mblabs/eslint-config": "^1.0.97",
+    "@mblabs/prettier-config": "^14.14.14",
+    "@mblabs/release-config": "^1.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "handlebars-helpers": "^0.10.0",
+    "semantic-release": "^18.0.0"
+  },
+  "engines": {
+    "node": ">=14.18.0"
   },
   "eslintConfig": {
     "extends": "@mblabs/eslint-config"
@@ -88,6 +52,20 @@
       "url": "https://www.patreon.com/ProfessorManhattan"
     }
   ],
+  "homepage": "https://megabyte.space",
+  "keywords": [
+    "common",
+    "docker",
+    "dockerfile",
+    "files",
+    "mblabs",
+    "megabytelabs",
+    "npm",
+    "package",
+    "professormanhattan",
+    "shared"
+  ],
+  "license": "MIT",
   "lint-staged": {
     "**/*": [
       "blocklint --wordlist blacklist,slave,whitelist",
@@ -129,12 +107,34 @@
       "task image:compress --"
     ]
   },
+  "name": "@mblabs/common-dockerfile",
+  "optionalDependencies": {
+    "chalk": "^4.1.2",
+    "inquirer": "^8.2.0",
+    "signale": "^1.4.0",
+    "string-break": "^1.2.0"
+  },
   "prettier": "@mblabs/prettier-config",
+  "private": true,
+  "publishConfig": {
+    "access": "public"
+  },
   "release": {
     "branches": [
       "master",
       "next"
     ],
     "extends": "@mblabs/release-config"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProfessorManhattan/common-dockerfile.git"
+  },
+  "scripts": {
+    "help": "task --list",
+    "prepare": "task common:husky",
+    "start": "bash .config/start.sh"
+  },
+  "type": "module",
+  "version": "0.0.1"
 }
