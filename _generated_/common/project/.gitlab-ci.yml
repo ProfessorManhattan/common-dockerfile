@@ -1,0 +1,17 @@
+---
+stages:
+  - update
+  - lint
+  - test
+  - publish
+
+include:
+  - local: .gitlab/ci/lint/eslint.gitlab-ci.yml
+  - local: .gitlab/ci/lint/hadolint.gitlab-ci.yml
+  - local: .gitlab/ci/lint/prettier.gitlab-ci.yml
+  - local: .gitlab/ci/lint/shellcheck.gitlab-ci.yml
+  - local: .gitlab/ci/lint/yamllint.gitlab-ci.yml
+  - local: .gitlab/ci/publish/docker/dockerhub.gitlab-ci.yml
+  - local: .gitlab/ci/publish/docker/gitlab-registry.gitlab-ci.yml
+  - local: .gitlab/ci/test/docker/slim.gitlab-ci.yml
+  - local: .gitlab/ci/update/project.gitlab-ci.yml
