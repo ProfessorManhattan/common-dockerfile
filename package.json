@@ -66,6 +66,8 @@
   },
   "blueprint": {
     "description": "Common files used in Dockerfile projects including global common files, documentation partials, and shared configurations",
+    "emoji_end": " 🐳",
+    "emoji_start": "",
     "group": "common",
     "name": "Common Dockerfile Project Files",
     "overview": "This repository contains files that propagate down to Dockerfile project repositories via CI. By doing this, dependencies and configuration files are kept in sync across many repositories. Individual Dockerfile projects inherit their upstream files by copying over the `.common` folder files and then the `.common-{{ PROJECT_TYPE }}` folder. After the individual projects do that, they merge the appropriate JSON into a `.variables.json` file and use that as the context to generate any files that match `*.hbs.*` or `*.handlebars`.",
