@@ -75,6 +75,9 @@
       "github": "https://github.com/ProfessorManhattan/common-dockerfile",
       "gitlab": "https://gitlab.com/megabyte-labs/common/dockerfile"
     },
+    "profile": {
+      "npmjs_organization": "installdoc"
+    },
     "slug": "common-dockerfile",
     "subgroup": "dockerfile",
     "title": "Common Dockerfile Project Files"
