@@ -1,6 +1,6 @@
 {
-  "private": true,
-  "name": "@mblabs/common-dockerfile",
+  "private": false,
+  "name": "@installdoc/common-dockerfile",
   "version": "0.0.1",
   "description": "Common files used in Dockerfile projects including global common files, documentation partials, and shared configurations",
   "license": "MIT",
@@ -23,7 +23,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "cz-emoji"
+      "path": "node_modules/cz-emoji-conventional"
     }
   },
   "dependencies": {},
@@ -45,7 +45,8 @@
     "npm",
     "package",
     "professormanhattan",
-    "shared"
+    "shared",
+    "washingtondc"
   ],
   "engines": {
     "node": ">=14.18.0"
@@ -60,19 +61,28 @@
     "group": "common",
     "name": "Common Dockerfile Project Files",
     "overview": "This repository contains files that propagate down to Dockerfile project repositories via CI. By doing this, dependencies and configuration files are kept in sync across many repositories. Individual Dockerfile projects inherit their upstream files by copying over the `.common` folder files and then the `.common-{{ PROJECT_TYPE }}` folder. After the individual projects do that, they merge the appropriate JSON into a `.variables.json` file and use that as the context to generate any files that match `*.hbs.*` or `*.handlebars`.",
+    "profile": {
+      "npmjs_organization": "installdoc"
+    },
     "repository": {
       "github": "https://github.com/ProfessorManhattan/common-dockerfile",
       "gitlab": "https://gitlab.com/megabyte-labs/common/dockerfile"
     },
-    "profile": {
-      "npmjs_organization": "installdoc"
-    },
     "slug": "common-dockerfile",
     "subgroup": "dockerfile",
-    "title": "Common Dockerfile Project Files"
+    "title": "Common Dockerfile Project Files",
+    "github_id": "R_kgDOGet1BA",
+    "gitlab_project_id": "25898653",
+    "gitlab_group_id": "11097242"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "helpUrl": "https://megabyte.space/docs/contributing/commits"
   },
   "eslintConfig": {
-    "extends": "@mblabs/eslint-config",
+    "extends": "eslint-config-strict-mode",
     "rules": {
       "import/no-extraneous-dependencies": "off"
     }
@@ -109,7 +119,6 @@
       "task fix:json --"
     ],
     "**/*.sh": [
-      "task fix:shell --",
       "task lint:shell --"
     ],
     "**/*.toml": [
@@ -128,12 +137,12 @@
       "task image:compress --"
     ]
   },
-  "prettier": "@mblabs/prettier-config",
+  "prettier": "@washingtondc/prettier",
   "release": {
     "branches": [
       "master",
       "next"
     ],
-    "extends": "@mblabs/release-config"
+    "extends": "@washingtondc/release"
   }
 }
