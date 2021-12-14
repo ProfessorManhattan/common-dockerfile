@@ -118,11 +118,29 @@
   "gitlab_pipelines": [
     {
       "active": true,
-      "cron": "0 12 * * 1",
-      "description": "Weekly build of latest version",
+      "cron": "0 11 * * 1",
+      "description": "Weekly Build",
       "ref": "master",
       "variable": {
         "WEEKLY_BUILD": true
+      }
+    },
+    {
+      "active": true,
+      "cron": "0 12 * * 1",
+      "description": "Weekly Test",
+      "ref": "master",
+      "variable": {
+        "WEEKLY_TEST": true
+      }
+    },
+    {
+      "active": true,
+      "cron": "0 5 1 * *",
+      "description": "Monthly Repository Update",
+      "ref": "synchronize",
+      "variable": {
+        "REPOSITORY_UPDATE": true
       }
     }
   ],
