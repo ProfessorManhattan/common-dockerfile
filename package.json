@@ -58,6 +58,9 @@
     "description": "Common files used in Dockerfile projects including global common files, documentation partials, and shared configurations",
     "emoji_end": " 🐳",
     "emoji_start": "",
+    "github_id": "R_kgDOGet1BA",
+    "gitlab_group_id": "11097242",
+    "gitlab_project_id": "25898653",
     "group": "common",
     "name": "Docker Common",
     "overview": "This repository contains files that propagate down to Dockerfile project repositories via CI. By doing this, dependencies and configuration files are kept in sync across many repositories. Individual Dockerfile projects inherit their upstream files by copying over the `.common` folder files and then the `.common-{{ PROJECT_TYPE }}` folder. After the individual projects do that, they merge the appropriate JSON into a `.variables.json` file and use that as the context to generate any files that match `*.hbs.*` or `*.handlebars`.",
@@ -70,10 +73,7 @@
     },
     "slug": "common-dockerfile",
     "subgroup": "dockerfile",
-    "title": "Common Dockerfile Project Files",
-    "github_id": "R_kgDOGet1BA",
-    "gitlab_project_id": "25898653",
-    "gitlab_group_id": "11097242"
+    "title": "Common Dockerfile Project Files"
   },
   "commitlint": {
     "extends": [
@@ -99,11 +99,7 @@
   ],
   "lint-staged": {
     "**/*": [
-      "blocklint --wordlist blacklist,slave,whitelist",
-      "check-merge-conflict",
-      "check-added-large-files",
-      "check-symlinks",
-      "destroyed-symlinks"
+      "task lint:any --"
     ],
     "**/*.(css|html|less|md|mjml|php|scss|sh|xml)": [
       "task fix:prettier --"
@@ -136,6 +132,14 @@
       "task image:resize -- 200 200",
       "task image:compress --"
     ]
+  },
+  "ntl": {
+    "descriptions": {
+      "help": "Display a list of tasks that can be run via the Taskfile.yml",
+      "prepare": "Hook, triggered by running npm install, that runs logic such as installing pre-commit hooks",
+      "repair": "Fixes basic issues in projects that are having trouble running basic commands like 'task start'",
+      "start": "Entrypoint for new developers that installs requirements and then runs 'task start'"
+    }
   },
   "prettier": "@washingtondc/prettier",
   "release": {
