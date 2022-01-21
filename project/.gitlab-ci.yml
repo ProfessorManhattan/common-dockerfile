@@ -6,12 +6,12 @@ stages:
   - publish
 
 include:
-  - local: .gitlab/ci/lint/eslint.gitlab-ci.yml
-  - local: .gitlab/ci/lint/hadolint.gitlab-ci.yml
-  - local: .gitlab/ci/lint/prettier.gitlab-ci.yml
-  - local: .gitlab/ci/lint/shellcheck.gitlab-ci.yml
-  - local: .gitlab/ci/lint/yamllint.gitlab-ci.yml
-  - local: .gitlab/ci/publish/docker/dockerhub.gitlab-ci.yml
-  - local: .gitlab/ci/publish/docker/gitlab-registry.gitlab-ci.yml
-  - local: .gitlab/ci/test/docker/slim.gitlab-ci.yml
-  - local: .gitlab/ci/update/project.gitlab-ci.yml
+  - remote: https://gitlab.com/megabyte-labs/gitlab-ci/-/raw/master/lint/eslint.gitlab-ci.yml
+  - remote: https://gitlab.com/megabyte-labs/gitlab-ci/-/raw/master/lint/hadolint.gitlab-ci.yml
+  - remote: https://gitlab.com/megabyte-labs/gitlab-ci/-/raw/master/lint/prettier.gitlab-ci.yml
+  - remote: https://gitlab.com/megabyte-labs/gitlab-ci/-/raw/master/lint/shellcheck.gitlab-ci.yml
+  - remote: https://gitlab.com/megabyte-labs/gitlab-ci/-/raw/master/lint/yamllint.gitlab-ci.yml
+  - remote: https://gitlab.com/megabyte-labs/gitlab-ci/-/raw/master/publish/docker/dockerhub.gitlab-ci.yml
+  - remote: https://gitlab.com/megabyte-labs/gitlab-ci/-/raw/master/publish/docker/gitlab-registry.gitlab-ci.yml
+  - remote: https://gitlab.com/megabyte-labs/gitlab-ci/-/raw/master/test/docker/slim.gitlab-ci.yml
+  - remote: https://gitlab.com/megabyte-labs/gitlab-ci/-/raw/master/update/project.gitlab-ci.yml
