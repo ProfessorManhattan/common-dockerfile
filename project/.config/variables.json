@@ -24,5 +24,7 @@
     "prefix": {
       "github": "docker-"
     }
-  }
+  },
+  "scriptsBuild": "task docker:build",
+  "scriptsTest": "task docker:test:container-structure-test"
 }
