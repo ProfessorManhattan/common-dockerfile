@@ -76,6 +76,16 @@
     "subgroup": "dockerfile",
     "title": "Common Dockerfile Project Files"
   },
+  "changelog": {
+    "displayTypes": [
+      "feat",
+      "fix",
+      "perf",
+      "refactor",
+      "revert"
+    ],
+    "showAuthor": true
+  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
