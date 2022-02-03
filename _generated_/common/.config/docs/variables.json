@@ -86,6 +86,7 @@
       }
     }
   ],
+  "gomodProxy": true,
   "group": "dockerfile",
   "homebrew": {
     "folder": "Formula",
