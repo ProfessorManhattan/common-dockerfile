@@ -1,7 +1,6 @@
 {{ load:.config/docs/readme/header.md }}
 {{ load:.config/docs/readme/subheader.md }}
 {{ load:.config/docs/readme/quick-description.md }}
-{{ load:.config/docs/readme/slim-disclaimer.md }}
 {{ template:toc }}
 {{ load:.config/docs/readme-ci-pipeline/overview.md }}
 {{ load:.config/docs/readme/requirements.md }}
