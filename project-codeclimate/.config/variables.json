@@ -36,7 +36,7 @@
   ],
   "repository": {
     "prefix": {
-      "github": "codeclimate-"
+      "github": ""
     }
   },
   "subgroup": "codeclimate"
