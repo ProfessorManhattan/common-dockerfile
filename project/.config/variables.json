@@ -21,6 +21,9 @@
   ],
   "group": "docker",
   "npm_type": "commonjs",
+  "profile": {
+    "npmjs_organization": "megabytelabs"
+  },
   "repository": {
     "prefix": {
       "github": ""
