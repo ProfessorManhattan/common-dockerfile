@@ -19,13 +19,13 @@
       }
     }
   ],
-  "group": "dockerfile",
+  "group": "docker",
   "npm_type": "commonjs",
   "repository": {
     "prefix": {
-      "github": "docker-"
+      "github": ""
     }
   },
   "scriptsBuild": "task docker:build",
-  "scriptsTest": "task docker:test:container-structure-test"
+  "scriptsTest": "task docker:test"
 }
