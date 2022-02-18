@@ -136,7 +136,7 @@
     }
   ],
   "gomodProxy": true,
-  "group": "dockerfile",
+  "group": "docker",
   "homebrew": {
     "folder": "Formula",
     "name": "homebrew-tap",
@@ -172,7 +172,7 @@
     "github": "ProfessorManhattan",
     "linkedin": "blzalewski",
     "npmjs": "thisismyfirstday",
-    "npmjs_organization": "mblabs",
+    "npmjs_organization": "megabytelabs",
     "opencollective": "megabytelabs",
     "patreon": "ProfessorManhattan",
     "pypi": "ProfessorManhattan",
@@ -273,7 +273,7 @@
     },
     "namespace": "",
     "prefix": {
-      "github": "docker-"
+      "github": ""
     },
     "project": {
       "assets": "https://gitlab.com/megabyte-labs/assets/-/raw/master",
@@ -286,7 +286,7 @@
   "scriptsHelp": "task --menu",
   "scriptsPrepare": "task common:husky",
   "scriptsStart": "bash start.sh",
-  "scriptsTest": "task docker:test:container-structure-test",
+  "scriptsTest": "task docker:test",
   "sharp_instructions": [],
   "slackNotificationChannel": "#misc",
   "slackNotificationIcon": "https://gitlab.com/megabyte-labs/misc/assets/-/raw/master/logo/megabytelabs-color-icon-350x350.png",

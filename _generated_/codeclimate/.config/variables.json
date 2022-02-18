@@ -71,7 +71,7 @@
   "docker_label_authors": "Brian Zalewski <brian@megabyte.space>",
   "docs": {
     "header_description_post": "<i></i>",
-    "header_description_pre": "A CodeClimate plugin maintained by ",
+    "header_description_pre": "A slim Docker image and CodeClimate engine maintained by ",
     "header_title_post": "<i></i>",
     "header_title_pre": "<i></i>",
     "link": "https://megabyte.space/docs/docker/ci"
@@ -182,7 +182,7 @@
     "github": "ProfessorManhattan",
     "linkedin": "blzalewski",
     "npmjs": "thisismyfirstday",
-    "npmjs_organization": "mblabs",
+    "npmjs_organization": "megabytelabs",
     "opencollective": "megabytelabs",
     "patreon": "ProfessorManhattan",
     "pypi": "ProfessorManhattan",
@@ -296,7 +296,7 @@
   "scriptsHelp": "task --menu",
   "scriptsPrepare": "task common:husky",
   "scriptsStart": "bash start.sh",
-  "scriptsTest": "task docker:test:container-structure-test",
+  "scriptsTest": "task docker:test",
   "sharp_instructions": [],
   "slackNotificationChannel": "#misc",
   "slackNotificationIcon": "https://gitlab.com/megabyte-labs/misc/assets/-/raw/master/logo/megabytelabs-color-icon-350x350.png",
