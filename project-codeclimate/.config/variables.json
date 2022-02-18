@@ -1,4 +1,5 @@
 {
+  "codeClimateSpecVersion": "0.0.1",
   "docs": {
     "header_description_pre": "A CodeClimate plugin maintained by ",
     "header_title_pre": "<i></i>",
