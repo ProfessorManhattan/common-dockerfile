@@ -162,7 +162,7 @@
   "name": "[[ package.json .blueprint.name - See CONTRIBUTING.md ]]",
   "npm_publish_config_access": "public",
   "npm_standard_version_prerelease": "git add --all",
-  "npm_type": "module",
+  "npm_type": "commonjs",
   "organization": "Megabyte Labs",
   "overview": "[[ This is a new repository without the details filled in yet. Look for the section about blueprint data in the CONTRIBUTING.md to set up the project. ]]",
   "profile": {
