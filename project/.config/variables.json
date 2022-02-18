@@ -1,4 +1,5 @@
 {
+  "dockerExampleCommand": "--help",
   "gitlab_pipelines": [
     {
       "active": true,
