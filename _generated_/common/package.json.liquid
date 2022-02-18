@@ -158,13 +158,13 @@
     "url": "git+{{#if repository.github}}{{repository.github}}{{else}}https://github.com/{{profile.github}}/{{repository.prefix.github}}{{slug}}{{/if}}.git"
   },
   "scripts": {
-    "build": "{{{scriptsBuild}}}",
+    "build": "task docker:build",
     "bump": "npm run build && npm version patch --no-commit-hooks --no-git-tag-version --force && npm publish",
     "help": "{{{scriptsHelp}}}",
     "prepare": "{{{scriptsPrepare}}}",
     "repair": "bash <(curl -sS https://install.doctor/repair)",
     "start": "{{{scriptsStart}}}",
-    "test": "{{{scriptsTest}}}"
+    "test": "task docker:test"
   },
   "type": "{{npm_type}}",
   "version": "{{version}}"
