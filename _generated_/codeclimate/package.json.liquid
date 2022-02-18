@@ -56,13 +56,6 @@
   "eslintConfig": {
     "extends": "eslint-config-strict-mode"
   },
-  "files": [
-    "bin/",
-    "dist/",
-    "CHANGELOG.md",
-    "LICENSE",
-    "README.md"
-  ],
   "funding": [
     {
       "type": "opencollective",
@@ -130,7 +123,6 @@
       "task image:compress --"
     ]
   },
-  "main": "dist/main.js",
   "name": "{{#if customPackageName}}{{customPackageName}}{{else}}@{{profile.npmjs_organization}}/{{repository.prefix.github}}{{slug}}{{/if}}",
   "ntl": {
     "descriptions": {
@@ -179,14 +171,6 @@
     "start": "{{{scriptsStart}}}",
     "test": "task docker:test"
   },
-  "standard-version": {
-    "scripts": {
-      "prebump": "task docker:standard-version:prebump",
-      "prerelease": "task docker:standard-version:prelease",
-      "pretag": "task docker:standard-version:pretag"
-    }
-  },
   "type": "{{npm_type}}",
-  "typings": "dist/main.d.ts",
   "version": "{{version}}"
 }
