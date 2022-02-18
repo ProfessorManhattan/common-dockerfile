@@ -1,7 +1,7 @@
 {
   "codeClimateSpecVersion": "0.0.1",
   "docs": {
-    "header_description_pre": "A CodeClimate plugin maintained by ",
+    "header_description_pre": "A slim Docker image and CodeClimate engine maintained by ",
     "header_title_pre": "<i></i>",
     "link": "https://megabyte.space/docs/docker/ci"
   },
@@ -36,7 +36,7 @@
   ],
   "repository": {
     "prefix": {
-      "github": ""
+      "github": "codeclimate-"
     }
   },
   "subgroup": "codeclimate"
