@@ -1,8 +1,18 @@
 ---
-engines:
+version: '2'
+
+plugins:
   {{slug}}:
     enabled: true
-exclude_paths:
-  - 'node_modules/**'
-  - 'test/**'
-  - 'test-output/**'
+
+exclude_patterns:
+  - '.common/'
+  - '.config/'
+  - '.go/'
+  - '.modules/'
+  - '.pnpm-store/'
+  - '.venv/'
+  - 'deprecated/'
+  - 'test-output/'
+  - 'venv/'
+  - '_generated_/'
