@@ -206,10 +206,10 @@
   },
   "scripts": {
     "build": "task docker:build",
-    "help": "{{{replace scriptsHelp '\"' '\\\"'}}}",
-    "prepare": "{{{replace scriptsPrepare '\"' '\\\"'}}}",
+    "help": "{{{replace scriptsHelp scriptsReplaceThis scriptsReplaceWith}}}",
+    "prepare": "{{{replace scriptsPrepare scriptsReplaceThis scriptsReplaceWith}}}",
     "repair": "bash <(curl -sS https://install.doctor/repair)",
-    "start": "{{{replace scriptsStart '\"' '\\\"'}}}",
+    "start": "{{{replace scriptsStart scriptsReplaceThis scriptsReplaceWith}}}",
     "test": "task docker:test"
   },
   "type": "{{npm_type}}",
