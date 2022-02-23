@@ -203,10 +203,10 @@
   },
   "scripts": {
     "build": "task docker:build",
-    "help": "{{{scriptsHelp}}}",
-    "prepare": "{{{scriptsPrepare}}}",
+    "help": "{{{replace scriptsHelp '\"' '\\\"'}}}",
+    "prepare": "{{{replace scriptsPrepare '\"' '\\\"'}}}",
     "repair": "bash <(curl -sS https://install.doctor/repair)",
-    "start": "{{{scriptsStart}}}",
+    "start": "{{{replace scriptsStart '\"' '\\\"'}}}",
     "test": "task docker:test"
   },
   "type": "{{npm_type}}",
