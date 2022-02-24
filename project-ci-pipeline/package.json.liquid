@@ -2,12 +2,5 @@
   "files": ["bin/", "dist/", "CHANGELOG.md", "LICENSE", "README.md"],
   "keywords": ["ci", "pipeline", "gitlab", "github", "github-actions", "gitlab-ci"],
   "main": "dist/main.js",
-  "standard-version": {
-    "scripts": {
-      "prebump": "task docker:standard-version:prebump",
-      "prerelease": "task docker:standard-version:prelease",
-      "pretag": "task docker:standard-version:pretag"
-    }
-  },
   "typings": "dist/main.d.ts"
 }
