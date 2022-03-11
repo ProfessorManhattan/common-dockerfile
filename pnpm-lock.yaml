@@ -14,7 +14,11 @@ specifiers:
   handlebars-helpers: ^0.10.0
   prettier-config-sexy-mode: latest
   semantic-release-config: latest
+  tslib: latest
   typescript: ^4.6.2
+
+dependencies:
+  tslib: 2.3.1
 
 devDependencies:
   '@commitlint/config-conventional': 16.2.1
@@ -23,7 +27,7 @@ devDependencies:
   git-cz-emoji: 1.1.24
   glob: 7.2.0
   handlebars-helpers: 0.10.0
-  prettier-config-sexy-mode: 1.0.3_typescript@4.6.2
+  prettier-config-sexy-mode: 1.1.2_typescript@4.6.2
   semantic-release-config: 1.1.18
   typescript: 4.6.2
 
@@ -7575,10 +7579,9 @@ packages:
     dev: true
     optional: true
 
-  /prettier-config-sexy-mode/1.0.3_typescript@4.6.2:
-    resolution: {integrity: sha512-A4bP9Ktdxyx5c+yd6reU5zcNqieIkyNwjoAo8vfjgxa3ZWpt2eRBeqKd7ru8gcrNOCiPI57JXXFjuDEvU0lfWg==}
+  /prettier-config-sexy-mode/1.1.2_typescript@4.6.2:
+    resolution: {integrity: sha512-HvLjCpnyUNyDCFKqr3uwmLcqbYR2hG8WvMpPw2VC/R0S08h5uDDrpMaA1ZdxCBsNoLba3tQ3GXUTC5aWGj6GQg==}
     engines: {node: '>=14.18.0'}
-    deprecated: Deprecated in favor of 1.1.0
     dependencies:
       '@prettier/plugin-php': 0.17.6_prettier@2.5.1
       '@prettier/plugin-pug': 1.19.2_prettier@2.5.1
@@ -7595,7 +7598,7 @@ packages:
       prettier-plugin-sh: 0.7.1_prettier@2.5.1
       prettier-plugin-solidity: 1.0.0-beta.19_prettier@2.5.1
       prettier-plugin-sql: 0.4.1_prettier@2.5.1
-      prettier-plugin-toml: 0.3.1
+      prettier-plugin-toml-fixed: 0.3.3
       tslib: 2.3.1
     transitivePeerDependencies:
       - supports-color
@@ -7722,8 +7725,8 @@ packages:
       sql-formatter: 4.0.2
     dev: true
 
-  /prettier-plugin-toml/0.3.1:
-    resolution: {integrity: sha512-j47DEO/dN/acU1nSL/B7q4A4Z2SYJhpWPCLPkcmfAXIQC6A5GD6Ao/bi9HRHZ8ueIDOauqjuAQbnvRxLXMjazA==}
+  /prettier-plugin-toml-fixed/0.3.3:
+    resolution: {integrity: sha512-0TSQPR3//82X3iL+EjjVdCxSwXDdkLC/X9AsFTq5CtkJ9biRWdI+3XpMi0wJQ+iguP8yjBjtxPq7wPAcPG0YuQ==}
     dependencies:
       '@toml-tools/parser': 0.3.1
       prettier: 1.19.1
@@ -9118,7 +9121,6 @@ packages:
 
   /tslib/2.3.1:
     resolution: {integrity: sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==}
-    dev: true
 
   /tsutils-etc/1.4.1_tsutils@3.21.0+typescript@4.6.2:
     resolution: {integrity: sha512-6UPYgc7OXcIW5tFxlsZF3OVSBvDInl/BkS3Xsu64YITXk7WrnWTVByKWPCThFDBp5gl5IGHOzGMdQuDCE7OL4g==}

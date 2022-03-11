@@ -46,7 +46,9 @@
       "path": "node_modules/git-cz-emoji"
     }
   },
-  "dependencies": {},
+  "dependencies": {
+    "tslib": "latest"
+  },
   "description": "Common files used in Dockerfile projects including global common files, documentation partials, and shared configurations",
   "devDependencies": {
     "@commitlint/config-conventional": "^16.0.0",
