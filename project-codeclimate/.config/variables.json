@@ -1,5 +1,5 @@
 {
-  "codeClimateSpecVersion": "0.0.1",
+  "codeClimateSpecVersion": "0.3.1",
   "docs": {
     "header_description_pre": "A slim Docker image and CodeClimate engine maintained by ",
     "header_title_pre": "<i></i>",
