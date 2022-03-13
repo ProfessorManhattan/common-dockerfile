@@ -36,9 +36,7 @@
     "showAuthor": true
   },
   "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ],
+    "extends": [],
     "helpUrl": "https://megabyte.space/docs/contributing/commits"
   },
   "config": {
@@ -51,13 +49,13 @@
   },
   "description": "Common files used in Dockerfile projects including global common files, documentation partials, and shared configurations",
   "devDependencies": {
-    "@commitlint/config-conventional": "latest",
     "eslint-config-strict-mode": "latest",
     "git-cz-emoji": "latest",
-    "handlebars-helpers": "latest",
     "prettier-config-sexy-mode": "latest",
     "semantic-release-config": "latest",
-    "typescript": "latest"
+    "typescript": "latest",
+    "@commitlint/config-conventional": "latest",
+    "handlebars-helpers": "latest"
   },
   "engines": {
     "node": ">=14.18.0"
