@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "build": "task docker:build",
-    "test": "task docker:test"
+    "build": "bash start.sh && task docker:build",
+    "test": "bash start.sh && task docker:test"
   },
   "keywords": ["docker", "dockerfile", "container", "virtualization"]
 }
