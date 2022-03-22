@@ -1,4 +1,4 @@
-FROM node:17-alpine AS codeclimate-eslint
+FROM node:17-alpine AS codeclimate
 
 WORKDIR /usr/src/app
 
@@ -53,7 +53,7 @@ LABEL org.opencontainers.image.vendor="Megabyte Labs"
 LABEL org.opencontainers.image.version=$VERSION
 LABEL space.megabyte.type="code-climate"
 
-FROM codeclimate-eslint AS eslint
+FROM codeclimate-eslint AS example
 
 VOLUME /work
 WORKDIR /work
