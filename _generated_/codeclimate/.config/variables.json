@@ -110,7 +110,7 @@
   ],
   "docs": {
     "header_description_post": "<i></i>",
-    "header_description_pre": "A slim Docker image and CodeClimate engine maintained by ",
+    "header_description_pre": "A performance-optimized CodeClimate engine maintained by ",
     "header_title_post": "<i></i>",
     "header_title_pre": "<i></i>",
     "link": "https://megabyte.space/docs/docker/ci"
@@ -362,6 +362,7 @@
     "dockerhub": "megabytelabs",
     "galaxy": "professormanhattan",
     "github": "ProfessorManhattan",
+    "githubOrg": "megabyte-labs",
     "linkedin": "blzalewski",
     "npmjs": "thisismyfirstday",
     "npmjs_organization": "megabytelabs",
