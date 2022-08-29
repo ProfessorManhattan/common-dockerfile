@@ -7,6 +7,5 @@
 {{ load:.config/docs/contributing/getting-started.md }}
 {{ load:.config/docs/contributing/testing.md }}
 {{ load:.config/docs/contributing/linting.md }}
-{{ load:.config/docs/contributing/docs.md }}
 {{ load:.config/docs/contributing/pull-requests.md }}
-{{ load:.config/docs/common/contributing/troubleshooting.md }}
+{{ load:.config/docs/contributing/styleguides.md }}
